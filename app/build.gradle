@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+    namespace 'com.inplanesight'
+
     compileSdk 32
 
     defaultConfig {

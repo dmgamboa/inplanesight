@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NavHostController navHostController = new NavHostController(this);
+//        NavHostController navHostController = new NavHostController(this);
     }
+
+
 }

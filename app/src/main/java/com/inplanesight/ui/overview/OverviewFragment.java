@@ -76,6 +76,5 @@ public class OverviewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Button btnGetStarted = view.findViewById(R.id.overviewBtnCTA);
         btnGetStarted.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_overviewFragment_to_findAirportFragment2); });
-
     }
 }

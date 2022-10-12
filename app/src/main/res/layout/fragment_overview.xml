@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/overviewCarouselLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    app:layoutDescription="@xml/fragment_overview_scene"
     tools:context=".ui.overview.OverviewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/overviewCarouselItem"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Overview" />
+        android:layout_height="500dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:background="#512DA8">
+
+            <ImageView
+                android:id="@+id/overviewImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/image_placeholder" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/overviewBlurbHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:text="Feature Heading"
+            android:textColor="#512DA8"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/overviewBlurbTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5sp"
+            android:text="RecyclerView makes it easy to efficiently display large sets of data." />
+    </LinearLayout>
+
+    <androidx.constraintlayout.helper.widget.Carousel
+        android:id="@+id/overviewCarousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:carousel_backwardTransition="@+id/backward"
+        app:carousel_firstView="@+id/imageView2"
+        app:carousel_forwardTransition="@+id/forward"
+        app:carousel_infinite="true"
+        app:carousel_nextState="@+id/next"
+        app:carousel_previousState="@+id/previous"
+        app:constraint_referenced_ids="overviewCarouselItem" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/overviewBtnCTA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/overviewBtnText"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+</LinearLayout>

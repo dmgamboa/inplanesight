@@ -18,6 +18,4 @@ public class MainActivity extends AppCompatActivity {
 
 //        NavHostController navHostController = new NavHostController(this);
     }
-
-
 }

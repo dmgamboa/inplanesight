@@ -2,6 +2,7 @@
     <string name="app_name">My Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="overviewBtnText">Get Started</string>
     <string name="hunt_page_title">Scavenger Hunt</string>
     <string name="hunt_name">Hunt Name</string>
     <string name="yvr_img1_desc">Airport large window wall</string>

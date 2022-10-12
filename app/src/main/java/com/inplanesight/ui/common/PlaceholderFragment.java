@@ -78,6 +78,14 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_placeholder, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button button = this.getView().findViewById(R.id.button);
+        button.setOnClickListener(this::firebaseClick);
 
         //Dummy Place ID for Coquitlam
         final String placeId = "ChIJn17CWsh4hlQRz3buLnZoV1k";
@@ -85,9 +93,7 @@ public class PlaceholderFragment extends Fragment {
         //Get API Key
         GooglePlacesAPI apiKey = new GooglePlacesAPI();
 
-        // Inflate the layout for this fragment
-        View placesView = inflater.inflate(R.layout.fragment_placeholder, container, false);
-        TextView places = (TextView) placesView.findViewById(R.id.viewData);
+        TextView places = (TextView) this.getView().findViewById(R.id.viewData);
 
         // Initialize the SDK
         Places.initialize(places.getContext(), apiKey.getApiKey());
@@ -104,8 +110,7 @@ public class PlaceholderFragment extends Fragment {
         placesClient.fetchPlace(request).addOnSuccessListener((response) -> {
             Place place = response.getPlace();
             Log.i(TAG, "Place found: " + place.getName());
-            final CharSequence placeText = place.getName();
-            places.setText(placeText);
+            places.setText(place.getName());
         }).addOnFailureListener((exception) -> {
             if (exception instanceof ApiException) {
                 final ApiException apiException = (ApiException) exception;
@@ -114,15 +119,6 @@ public class PlaceholderFragment extends Fragment {
                 // TODO: Handle error with given status code.
             }
         });
-
-        return placesView;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Button button = this.getView().findViewById(R.id.button);
-        button.setOnClickListener(this::firebaseClick);
     }
 
     public void firebaseClick(View view) {

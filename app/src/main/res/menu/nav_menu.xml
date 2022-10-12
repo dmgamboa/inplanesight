@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/navMenuBtm">
     <item
-        android:id="@+id/checkInFragment"
+        android:id="@+id/findAirportFragment2"
         android:icon="@drawable/ic_check_in"
         android:title="@string/nav_menu_check_in" />
     <item

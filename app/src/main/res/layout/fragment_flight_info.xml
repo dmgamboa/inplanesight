@@ -22,6 +22,7 @@
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:text="Flight Info"
+            android:textColor="@color/teal_200"
             android:textSize="30sp" />
 
         <Button
@@ -32,6 +33,7 @@
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:text="Refresh"
+            android:backgroundTint="@color/orange"
             android:textSize="25sp" />
 
     </GridLayout>
@@ -44,6 +46,7 @@
         android:gravity="center"
         android:padding="20dp"
         android:text="Time To Next Flight"
+        android:textColor="@color/teal_200"
         android:textSize="25sp" />
 
     <TextView
@@ -54,6 +57,7 @@
         android:gravity="center"
         android:paddingBottom="20dp"
         android:text="01:00"
+        android:textColor="@color/orange"
         android:textSize="40sp" />
 
     <TextView
@@ -63,6 +67,7 @@
         android:layout_row="3"
         android:padding="20dp"
         android:text="(AC) Air Canada 8446\nFrom (YVR) - Vancouver, BC CA\nTo (YXT) - Terrace, BC CA\n🛫6:25 PM  🛬7:57 PM"
+        android:textColor="@color/teal_700"
         android:textSize="20sp" />
 
     <TextView
@@ -72,6 +77,7 @@
         android:layout_row="4"
         android:padding="20dp"
         android:text="(UA) United Airlines 8381\nFrom (YXT) - Terrace, BC CA\nTo (DEN) - Denver, CO US\n🛫10:05 PM  🛬3:08 AM"
+        android:textColor="@color/teal_700"
         android:textSize="20sp" />
 
     <include layout="@layout/view_bottom_nav"/>

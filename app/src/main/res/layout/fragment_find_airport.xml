@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rowCount="3"
-    android:columnCount="1"
     android:padding="20dp" >
 
-    <TextView
-        android:id="@+id/tvFindAirportPrompt"
-        android:layout_width="match_parent"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:padding="20dp"
-        android:text="Find Your Airport"
-        android:textColor="@color/teal_200"
-        android:textSize="30sp" />
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tvFindAirportPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Find Your Airport"
+            android:textColor="@color/teal_200"
+            android:textSize="30sp" />
+    </TableRow>
 
-    <Button
-        android:id="@+id/btnLocation"
-        android:layout_width="match_parent"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:text="📍 Use My Location"
-        android:backgroundTint="@color/orange"
-        android:textSize="25sp" />
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="📍 Use My Location"
+            android:backgroundTint="@color/orange"
+            android:textSize="25sp" />
+    </TableRow>
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="match_parent"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:backgroundTint="@color/teal_700"
-        android:text="🔍 Search"
-        android:textSize="25sp" />
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:backgroundTint="@color/teal_700"
+            android:text="🔍 Search"
+            android:textSize="25sp" />
+    </TableRow>
 
-</GridLayout>
+</TableLayout>

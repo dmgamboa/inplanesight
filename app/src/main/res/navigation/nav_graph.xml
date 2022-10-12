@@ -13,12 +13,25 @@
         <action
             android:id="@+id/action_checkInFragment_to_findFragment2"
             app:destination="@id/findFragment" />
+        <action
+            android:id="@+id/action_checkInFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/flightInfoFragment"
         android:name="com.inplanesight.ui.flight_info.FlightInfoFragment"
         android:label="fragment_flight_info"
-        tools:layout="@layout/fragment_flight_info" />
+        tools:layout="@layout/fragment_flight_info" >
+        <action
+            android:id="@+id/action_flightInfoFragment_to_leaderboardsFragment"
+            app:destination="@id/leaderboardsFragment" />
+        <action
+            android:id="@+id/action_flightInfoFragment_to_findFragment"
+            app:destination="@id/findFragment" />
+        <action
+            android:id="@+id/action_flightInfoFragment_to_findAirportFragment2"
+            app:destination="@id/findAirportFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/findFragment"
         android:name="com.inplanesight.ui.find.FindFragment"
@@ -27,12 +40,25 @@
         <action
             android:id="@+id/action_findFragment_to_leaderboardsFragment2"
             app:destination="@id/leaderboardsFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_findAirportFragment2"
+            app:destination="@id/findAirportFragment2" />
     </fragment>
     <fragment
         android:id="@+id/leaderboardsFragment"
         android:name="com.inplanesight.ui.leaderboards.LeaderboardsFragment"
         android:label="fragment_leaderboards"
-        tools:layout="@layout/fragment_leaderboards" />
+        tools:layout="@layout/fragment_leaderboards" >
+        <action
+            android:id="@+id/action_leaderboardsFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_leaderboardsFragment_to_findFragment"
+            app:destination="@id/findFragment" />
+    </fragment>
     <fragment
         android:id="@+id/overviewFragment"
         android:name="com.inplanesight.ui.overview.OverviewFragment"
@@ -41,21 +67,6 @@
         <action
             android:id="@+id/action_overviewFragment_to_findAirportFragment2"
             app:destination="@id/findAirportFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.inplanesight.ui.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_findFragment"
-            app:destination="@id/findFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_overviewFragment2"
-            app:destination="@id/overviewFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_flightInfoFragment"
-            app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/findAirportFragment2"

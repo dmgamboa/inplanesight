@@ -5,6 +5,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -13,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
 
 /**
@@ -86,6 +92,10 @@ public class FlightInfoFragment extends Fragment {
 
         Button button = this.getView().findViewById(R.id.btnRefresh);
 
-        
+        FragmentManager supportFragmentManager = requireActivity().getSupportFragmentManager();
+        NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
+        NavController navController = navHostFragment.getNavController();
+        BottomNavigationView bottomNav = getView().findViewById(R.id.bottom_nav);
+        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

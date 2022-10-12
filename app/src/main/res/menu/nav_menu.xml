@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navMenuBtm">
+    <item
+        android:id="@+id/checkInFragment"
+        android:icon="@drawable/ic_check_in"
+        android:title="@string/nav_menu_check_in" />
+    <item
+        android:id="@+id/findFragment"
+        android:icon="@drawable/ic_find"
+        android:title="@string/nav_menu_find" />
+    <item
+        android:id="@+id/leaderboardsFragment"
+        android:icon="@drawable/ic_leaderboards"
+        android:title="@string/nav_menu_leaderboards" />
+    <item
+        android:id="@+id/flightInfoFragment"
+        android:icon="@drawable/ic_flight_info"
+        android:title="@string/nav_menu_flight_info" />
+</menu>

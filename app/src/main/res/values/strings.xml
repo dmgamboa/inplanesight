@@ -15,4 +15,8 @@
     <string name="score">Score</string>
     <string name="time">Time</string>
     <string name="avatar_img">Avatar image</string>
+    <string name="nav_menu_check_in">Search Flights</string>
+    <string name="nav_menu_find">Find</string>
+    <string name="nav_menu_leaderboards">Leaderboards</string>
+    <string name="nav_menu_flight_info">Your Flights</string>
 </resources>

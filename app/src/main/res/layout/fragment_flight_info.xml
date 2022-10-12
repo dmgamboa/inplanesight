@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rowCount="8"
     android:columnCount="1"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:rowCount="6">
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="0"
-        android:rowCount="1"
-        android:columnCount="2">
+        android:columnCount="2"
+        android:rowCount="1">
 
         <TextView
             android:id="@+id/tvFlightInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_row="0"
             android:layout_column="0"
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:text="Flight Info"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/btnRefresh"
@@ -74,4 +74,5 @@
         android:text="(UA) United Airlines 8381\nFrom (YXT) - Terrace, BC CA\nTo (DEN) - Denver, CO US\n🛫10:05 PM  🛬3:08 AM"
         android:textSize="20sp" />
 
+    <include layout="@layout/view_bottom_nav"/>
 </GridLayout>

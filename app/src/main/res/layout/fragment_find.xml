@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/marine_blue"
     tools:context=".ui.find.FindFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Find" />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:textSize="40sp"
+            android:textColor="@color/orange"
+            android:paddingLeft="10dp"
+            android:text="@string/hunt_page_title" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="@string/hunt_name" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="218dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="20dp"
+                android:padding="2dp"
+                android:contentDescription="@string/yvr_img1_desc"
+                android:background="@drawable/leaderboard_border"
+                android:src="@drawable/test_hunt_image">
+
+            </ImageView>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:padding="4sp"
+            android:text="@string/yvr_hunt1_desc"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/orange"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@color/marine_blue"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/aqua"
+            android:text="@string/start_hunt" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/aqua"
+            android:text="@string/leaderboards" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/aqua"
+            android:text="@string/new_hunt" />
+
+    </LinearLayout>
 </FrameLayout>

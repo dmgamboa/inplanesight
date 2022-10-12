@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,18 @@ import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.widget.TextView;
+
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.inplanesight.R;
+import com.inplanesight.api.GooglePlacesAPI;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +38,7 @@ public class PlaceholderFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,8 +78,44 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //Dummy Place ID for Coquitlam
+        final String placeId = "ChIJn17CWsh4hlQRz3buLnZoV1k";
+
+        //Get API Key
+        GooglePlacesAPI apiKey = new GooglePlacesAPI();
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_placeholder, container, false);
+        View placesView = inflater.inflate(R.layout.fragment_placeholder, container, false);
+        TextView places = (TextView) placesView.findViewById(R.id.viewData);
+
+        // Initialize the SDK
+        Places.initialize(places.getContext(), apiKey.getApiKey());
+
+        // Create a new PlacesClient instance
+        PlacesClient placesClient = Places.createClient(places.getContext());
+
+        // Specify the fields to return.
+        final List<Place.Field> placeFields = Arrays.asList(Place.Field.ID, Place.Field.NAME);
+
+        // Construct a request object, passing the place ID and fields array.
+        final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId, placeFields);
+
+        placesClient.fetchPlace(request).addOnSuccessListener((response) -> {
+            Place place = response.getPlace();
+            Log.i(TAG, "Place found: " + place.getName());
+            final CharSequence placeText = place.getName();
+            places.setText(placeText);
+        }).addOnFailureListener((exception) -> {
+            if (exception instanceof ApiException) {
+                final ApiException apiException = (ApiException) exception;
+                Log.e(TAG, "Place not found: " + exception.getMessage());
+                final int statusCode = apiException.getStatusCode();
+                // TODO: Handle error with given status code.
+            }
+        });
+
+        return placesView;
     }
 
     @Override

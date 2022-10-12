@@ -1,28 +1,27 @@
-package com.inplanesight.ui.overview;
+package com.inplanesight.ui.checkin;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.inplanesight.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OverviewFragment#newInstance} factory method to
+ * Use the {@link FindAirportFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OverviewFragment extends Fragment {
+public class FindAirportFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +32,7 @@ public class OverviewFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public OverviewFragment() {
+    public FindAirportFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class OverviewFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OverviewFragment.
+     * @return A new instance of fragment FindAirportFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OverviewFragment newInstance(String param1, String param2) {
-        OverviewFragment fragment = new OverviewFragment();
+    public static FindAirportFragment newInstance(String param1, String param2) {
+        FindAirportFragment fragment = new FindAirportFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,14 +67,15 @@ public class OverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview, container, false);
+        return inflater.inflate(R.layout.fragment_find_airport, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btnGetStarted = view.findViewById(R.id.overviewBtnCTA);
-        btnGetStarted.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_overviewFragment_to_findAirportFragment2); });
-
+        Button locationBtn = this.getView().findViewById(R.id.btnLocation);
+        Button searchBtn = this.getView().findViewById(R.id.btnSearch);
+        locationBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_findAirportFragment2_to_myLocationFragment2); });
+        searchBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_findAirportFragment2_to_searchFragment2); });
     }
 }

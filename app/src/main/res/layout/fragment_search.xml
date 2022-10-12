@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:rowCount="3"
@@ -15,17 +14,20 @@
         android:layout_row="0"
         android:layout_column="0"
         android:padding="20dp"
-        android:text="Select Your Flight"
+        android:text="🔍 Search"
         android:textSize="30sp" />
 
-    <Spinner
-        android:id="@+id/spFlights"
+    <EditText
+        android:id="@+id/etAirportSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Type airport code/name..."
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -61,4 +63,5 @@
             android:textSize="25sp" />
 
     </GridLayout>
+
 </GridLayout>

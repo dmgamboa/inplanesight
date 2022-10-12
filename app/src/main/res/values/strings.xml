@@ -14,5 +14,5 @@
     <string name="username">Username</string>
     <string name="score">Score</string>
     <string name="time">Time</string>
-    <sting name="avatar_img">Avatar image</sting>
+    <string name="avatar_img">Avatar image</string>
 </resources>

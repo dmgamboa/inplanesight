@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_checkInFragment_to_findFragment2"
             app:destination="@id/findFragment" />
-        <action
-            android:id="@+id/action_checkInFragment_to_flightInfoFragment2"
-            app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/flightInfoFragment"
@@ -42,8 +39,8 @@
         android:label="fragment_overview"
         tools:layout="@layout/fragment_overview" >
         <action
-            android:id="@+id/action_overviewFragment_to_checkInFragment2"
-            app:destination="@id/checkInFragment" />
+            android:id="@+id/action_overviewFragment_to_findAirportFragment2"
+            app:destination="@id/findAirportFragment2" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -56,5 +53,35 @@
         <action
             android:id="@+id/action_splashFragment_to_overviewFragment2"
             app:destination="@id/overviewFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findAirportFragment2"
+        android:name="com.inplanesight.ui.checkin.FindAirportFragment"
+        android:label="FindAirportFragment" >
+        <action
+            android:id="@+id/action_findAirportFragment2_to_myLocationFragment2"
+            app:destination="@id/myLocationFragment2" />
+        <action
+            android:id="@+id/action_findAirportFragment2_to_searchFragment2"
+            app:destination="@id/searchFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myLocationFragment2"
+        android:name="com.inplanesight.ui.checkin.MyLocationFragment"
+        android:label="MyLocationFragment" >
+        <action
+            android:id="@+id/action_myLocationFragment2_to_checkInFragment"
+            app:destination="@id/checkInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.inplanesight.ui.checkin.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment2_to_checkInFragment"
+            app:destination="@id/checkInFragment" />
     </fragment>
 </navigation>

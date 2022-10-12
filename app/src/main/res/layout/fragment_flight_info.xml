@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.flight_info.FlightInfoFragment">
+    android:rowCount="8"
+    android:columnCount="1"
+    android:padding="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:rowCount="1"
+        android:columnCount="2">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvFlightInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:text="Flight Info"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:text="Refresh"
+            android:textSize="25sp" />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tvTimeToNextFlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Time To Next Flight"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:text="01:00"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tvNextFlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:padding="20dp"
+        android:text="(AC) Air Canada 8446\nFrom (YVR) - Vancouver, BC CA\nTo (YXT) - Terrace, BC CA\n🛫6:25 PM  🛬7:57 PM"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvNextFlight2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:padding="20dp"
+        android:text="(UA) United Airlines 8381\nFrom (YXT) - Terrace, BC CA\nTo (DEN) - Denver, CO US\n🛫10:05 PM  🛬3:08 AM"
+        android:textSize="20sp" />
+
+</GridLayout>

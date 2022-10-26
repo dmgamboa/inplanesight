@@ -15,7 +15,7 @@
         android:layout_column="0"
         android:padding="20dp"
         android:text="📍 Use My Location"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/teal_700"
         android:textSize="30sp" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:padding="20dp"
         android:layout_marginTop="50dp"
         android:text="Current Location:\nYVR - Vancouver Int' Airport"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/teal_700"
         android:textSize="30sp" />
 
     <GridLayout
@@ -62,7 +62,7 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="Confirm"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/teal_200"
             android:textSize="25sp" />
 
     </GridLayout>

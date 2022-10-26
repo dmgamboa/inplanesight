@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="Find Your Airport"
-            android:textColor="@color/teal_200"
+            android:textColor="@color/teal_700"
             android:textSize="30sp" />
     </TableRow>
 
@@ -41,7 +41,7 @@
             android:id="@+id/btnSearch"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/teal_200"
             android:text="🔍 Search"
             android:textSize="25sp" />
     </TableRow>

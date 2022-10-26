@@ -23,7 +23,8 @@
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
-            android:background="#512DA8">
+            android:background="#512DA8"
+            android:backgroundTint="@color/teal_200">
 
             <ImageView
                 android:id="@+id/overviewImage"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5sp"
             android:text="Feature Heading"
-            android:textColor="#512DA8"
+            android:textColor="@color/teal_700"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -68,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/overviewBtnText"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:backgroundTint="@color/orange"/>
 
 </LinearLayout>

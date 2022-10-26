@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/marine_blue"
     tools:context=".ui.find.FindFragment">
 
     <LinearLayout
@@ -20,7 +19,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
             android:textSize="40sp"
-            android:textColor="@color/orange"
+            android:textColor="@color/teal_700"
             android:paddingLeft="10dp"
             android:text="@string/leaderboards" />
 
@@ -28,7 +27,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/teal_700"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:paddingLeft="20dp"
@@ -92,8 +91,7 @@
             android:text="@string/hunt_try_text"
             android:layout_gravity="center"
             android:textSize="14sp"
-            android:textColor="@color/white"
-            android:background="@color/marine_blue"/>
+            android:textColor="@color/teal_700"/>
 
         <Button
             android:id="@+id/button2"
@@ -101,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/aqua"
+            android:backgroundTint="@color/orange"
             android:text="@string/start_hunt" />
     </LinearLayout>
 

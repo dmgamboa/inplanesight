@@ -91,11 +91,5 @@ public class FlightInfoFragment extends Fragment {
         }.start();
 
         Button button = this.getView().findViewById(R.id.btnRefresh);
-
-        FragmentManager supportFragmentManager = requireActivity().getSupportFragmentManager();
-        NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
-        NavController navController = navHostFragment.getNavController();
-        BottomNavigationView bottomNav = getView().findViewById(R.id.bottom_nav);
-        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

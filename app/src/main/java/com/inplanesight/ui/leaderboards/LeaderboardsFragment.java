@@ -74,11 +74,5 @@ public class LeaderboardsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        FragmentManager supportFragmentManager = requireActivity().getSupportFragmentManager();
-        NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
-        NavController navController = navHostFragment.getNavController();
-        BottomNavigationView bottomNav = getView().findViewById(R.id.bottom_nav);
-        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

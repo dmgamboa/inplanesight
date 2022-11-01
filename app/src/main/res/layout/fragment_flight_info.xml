@@ -79,6 +79,4 @@
         android:text="(UA) United Airlines 8381\nFrom (YXT) - Terrace, BC CA\nTo (DEN) - Denver, CO US\n🛫10:05 PM  🛬3:08 AM"
         android:textColor="@color/teal_700"
         android:textSize="20sp" />
-
-    <include layout="@layout/view_bottom_nav"/>
 </GridLayout>

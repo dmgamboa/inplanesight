@@ -102,6 +102,4 @@
             android:backgroundTint="@color/orange"
             android:text="@string/start_hunt" />
     </LinearLayout>
-
-    <include layout="@layout/view_bottom_nav" />
 </LinearLayout>

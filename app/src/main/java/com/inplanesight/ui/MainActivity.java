@@ -20,6 +20,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try {
+            FragmentManager supportFragmentManager = getSupportFragmentManager();
+            NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
+            NavController navController = navHostFragment.getNavController();
+            BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+            NavigationUI.setupWithNavController(bottomNav, navController);
+        } catch (Exception e) {
+            Log.d("test", e.getMessage());
+        }
+
     }
 
     @Override

@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/textView2"
@@ -33,20 +34,21 @@
             android:paddingLeft="20dp"
             android:text="@string/hunt_name" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="218dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginBottom="20dp"
-                android:padding="2dp"
-                android:contentDescription="@string/yvr_img1_desc"
-                android:background="@drawable/leaderboard_border"
-                android:src="@drawable/test_hunt_image">
+        <ImageView
+            android:id="@+id/hunt_photo"
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/leaderboard_border"
+            android:contentDescription="@string/yvr_img1_desc"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:src="@drawable/test_hunt_image">
 
-            </ImageView>
+        </ImageView>
 
         <TextView
             android:id="@+id/textView7"

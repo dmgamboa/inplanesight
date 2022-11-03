@@ -15,13 +15,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.inplanesight.R;
+import com.inplanesight.ui.common.NavlessFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FindAirportFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FindAirportFragment extends Fragment {
+public class FindAirportFragment extends NavlessFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

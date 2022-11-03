@@ -16,13 +16,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.inplanesight.R;
+import com.inplanesight.ui.common.NavlessFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link OverviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends NavlessFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

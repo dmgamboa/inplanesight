@@ -40,17 +40,6 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
         NavController navController = navHostFragment.getNavController();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
-
-        navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
-            int[] navlessFragments = { R.id.findAirportFragment2, R.id.myLocationFragment2, R.id. searchFragment2, R.id.checkInFragment, R.id.overviewFragment };
-
-            if (ArrayUtils.contains(navlessFragments, navDestination.getId())) {
-                bottomNav.setVisibility(View.GONE);
-            } else {
-                bottomNav.setVisibility(View.VISIBLE);
-            }
-        });
-
         NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

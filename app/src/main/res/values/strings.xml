@@ -22,4 +22,5 @@
     <string name="Placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>
+    <string name="use_my_location">Use My Location</string>
 </resources>

@@ -121,7 +121,7 @@ public class MyLocationFragment extends NavlessFragment {
         });
 
         backBtn.setOnClickListener((e) -> { Navigation.findNavController(view).popBackStack(); });
-        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_myLocationFragment2_to_checkInFragment);});
+        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_myLocationFragment_to_checkInFragment);});
     }
 
     @Override

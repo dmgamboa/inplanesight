@@ -75,6 +75,6 @@ public class SearchFragment extends NavlessFragment {
         Button backBtn = this.getView().findViewById(R.id.btnBack);
         Button confirmBtn = this.getView().findViewById(R.id.btnConfirm);
         backBtn.setOnClickListener((e) -> { Navigation.findNavController(view).popBackStack(); });
-        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_searchFragment2_to_checkInFragment);});
+        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_checkInFragment);});
     }
 }

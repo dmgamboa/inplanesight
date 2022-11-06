@@ -19,6 +19,7 @@
     <string name="nav_menu_find">Find</string>
     <string name="nav_menu_leaderboards">Leaderboards</string>
     <string name="nav_menu_flight_info">Your Flights</string>
+    <string name="nav_menu_account">Account</string>
     <string name="Placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>

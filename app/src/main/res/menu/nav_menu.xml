@@ -2,10 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/navMenuBtm">
     <item
-        android:id="@+id/findAirportFragment2"
-        android:icon="@drawable/ic_check_in"
-        android:title="@string/nav_menu_check_in" />
-    <item
         android:id="@+id/findFragment"
         android:icon="@drawable/ic_find"
         android:title="@string/nav_menu_find" />
@@ -17,4 +13,9 @@
         android:id="@+id/flightInfoFragment"
         android:icon="@drawable/ic_flight_info"
         android:title="@string/nav_menu_flight_info" />
+
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_account"
+        android:title="@string/nav_menu_account" />
 </menu>

@@ -4,16 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.inplanesight.R;
 import com.inplanesight.ui.common.NavlessFragment;
@@ -76,6 +73,6 @@ public class OverviewFragment extends NavlessFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button btnGetStarted = view.findViewById(R.id.overviewBtnCTA);
-        btnGetStarted.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_overviewFragment_to_findAirportFragment2); });
+        btnGetStarted.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_overviewFragment_to_findAirportFragment); });
     }
 }

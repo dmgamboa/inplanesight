@@ -1,24 +1,17 @@
 package com.inplanesight.ui;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.NavHostController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.inplanesight.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupNav() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);
         NavController navController = navHostFragment.getNavController();
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

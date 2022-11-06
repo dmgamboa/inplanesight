@@ -7,7 +7,7 @@
     app:startDestination="@id/overviewFragment">
     <fragment
         android:id="@+id/checkInFragment"
-        android:name="com.inplanesight.ui.checkin.CheckInFragment"
+        android:name="com.inplanesight.ui.check_in.CheckInFragment"
         android:label="fragment_check_in"
         tools:layout="@layout/fragment_check_in" >
         <action
@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/findAirportFragment"
-        android:name="com.inplanesight.ui.checkin.FindAirportFragment"
+        android:name="com.inplanesight.ui.check_in.FindAirportFragment"
         android:label="FindAirportFragment" >
         <action
             android:id="@+id/action_findAirportFragment_to_myLocationFragment"
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/myLocationFragment"
-        android:name="com.inplanesight.ui.checkin.MyLocationFragment"
+        android:name="com.inplanesight.ui.check_in.MyLocationFragment"
         android:label="MyLocationFragment" >
         <action
             android:id="@+id/action_myLocationFragment_to_checkInFragment"
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.inplanesight.ui.checkin.SearchFragment"
+        android:name="com.inplanesight.ui.check_in.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_checkInFragment"

@@ -1,4 +1,4 @@
-package com.inplanesight.ui.checkin;
+package com.inplanesight.ui.check_in;
 
 import android.os.Bundle;
 
@@ -17,10 +17,10 @@ import com.inplanesight.ui.common.NavlessFragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FindAirportFragment#newInstance} factory method to
+ * Use the {@link CheckInFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FindAirportFragment extends NavlessFragment {
+public class CheckInFragment extends NavlessFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +31,7 @@ public class FindAirportFragment extends NavlessFragment {
     private String mParam1;
     private String mParam2;
 
-    public FindAirportFragment() {
+    public CheckInFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +41,11 @@ public class FindAirportFragment extends NavlessFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FindAirportFragment.
+     * @return A new instance of fragment CheckInFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FindAirportFragment newInstance(String param1, String param2) {
-        FindAirportFragment fragment = new FindAirportFragment();
+    public static CheckInFragment newInstance(String param1, String param2) {
+        CheckInFragment fragment = new CheckInFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,15 +66,15 @@ public class FindAirportFragment extends NavlessFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find_airport, container, false);
+        return inflater.inflate(R.layout.fragment_check_in, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button locationBtn = this.getView().findViewById(R.id.btnLocation);
-        Button searchBtn = this.getView().findViewById(R.id.btnSearch);
-        locationBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_findAirportFragment_to_myLocationFragment); });
-        searchBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_findAirportFragment_to_searchFragment); });
+        Button backBtn = this.getView().findViewById(R.id.btnBack);
+        Button confirmBtn = this.getView().findViewById(R.id.btnConfirm);
+        backBtn.setOnClickListener((e) -> { Navigation.findNavController(view).popBackStack(); });
+        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_checkInFragment_to_findFragment2);});
     }
 }

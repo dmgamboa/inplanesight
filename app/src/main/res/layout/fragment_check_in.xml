@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rowCount="3"
+    android:rowCount="5"
     android:columnCount="1"
     android:padding="20dp">
 
@@ -15,24 +14,49 @@
         android:layout_row="0"
         android:layout_column="0"
         android:padding="20dp"
-        android:text="Select Your Flight"
+        android:text="📍 Use My Location"
         android:textColor="@color/teal_700"
         android:textSize="30sp" />
 
-    <Spinner
-        android:id="@+id/spFlights"
+    <Button
+        android:id="@+id/btnUseMyLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/use_my_location" />
+    <TextView
+        android:id="@+id/tvOutputLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Your Current Location: "
+        android:textColor="@color/teal_700"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvCurrentLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_marginTop="50dp"
+        android:text="Current Location:\nYVR - Vancouver Int' Airport"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:layout_row="2"
+        android:layout_row="4"
         android:layout_column="0"
         android:rowCount="1"
         android:columnCount="2">
@@ -64,4 +88,5 @@
             android:textSize="25sp" />
 
     </GridLayout>
+
 </GridLayout>

@@ -1,6 +1,26 @@
 <resources>
-    <string name="app_name">In Plane Sight</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">In Plane Sight</string>=
+
+    <!-- Nav Menu -->
+    <string name="nav_menu_check_in">Search Flights</string>
+    <string name="nav_menu_find">Find</string>
+    <string name="nav_menu_leaderboards">Leaderboards</string>
+    <string name="nav_menu_flight_info">Your Flights</string>
+    <string name="nav_menu_account">Account</string>
+
+    <!-- Check-In -->
+    <string name="check_in_header">Let\'s check you in!</string>
+    <string name="check_in_text">To continue, select your airport</string>
+    <string name="check_in_select_airport">Select Flight</string>
+    <string name="check_in_suggest_airport">Use my location</string>
+    <string name="check_in_suggest_airport_toast">Updated selection based on your GPS location</string>
+
+    <!-- Search Flights -->
+    <string name="search_flights_header">Departing flights at </string>
+    <string name="search_flights_airport"><b>Airport</b></string>
+    <string name="search_flights_select_btn">Select Flight</string>
+    <string name="search_flights_back_btn">Go back</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overviewBtnText">Get Started</string>
     <string name="hunt_page_title">Scavenger Hunt</string>
@@ -15,13 +35,9 @@
     <string name="score">Score</string>
     <string name="time">Time</string>
     <string name="avatar_img">Avatar image</string>
-    <string name="nav_menu_check_in">Search Flights</string>
-    <string name="nav_menu_find">Find</string>
-    <string name="nav_menu_leaderboards">Leaderboards</string>
-    <string name="nav_menu_flight_info">Your Flights</string>
-    <string name="nav_menu_account">Account</string>
+
     <string name="Placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>
-    <string name="use_my_location">Use My Location</string>
+    <string name="use_my_location">Suggest Based on Location</string>
 </resources>

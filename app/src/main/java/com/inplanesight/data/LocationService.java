@@ -1,6 +1,7 @@
 package com.inplanesight.data;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,15 +11,14 @@ import android.location.LocationManager;
 import android.os.IBinder;
 import android.provider.Settings;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.inplanesight.models.Coordinates;
+
 
 public class LocationService extends Service {
-    final public static int LATITUDE_INDEX = 0;
-    final public static int LONGITUDE_INDEX = 1;
     final public static String[] REQUIRED_PERMISSIONS = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION
@@ -26,7 +26,7 @@ public class LocationService extends Service {
 
     FusedLocationProviderClient locationProvider;
     LocationManager locationManager;
-    Double[] location = new Double[2];
+    Coordinates location;
     Context context;
 
     public LocationService(Context context) {
@@ -41,22 +41,17 @@ public class LocationService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    @SuppressLint("MissingPermission")
     public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
             locationProvider.getLastLocation().addOnCompleteListener(task -> {
                 Location res = task.getResult();
-                Double latitude;
-                Double longitude;
-
-                if (location != null) {
-                    location[LATITUDE_INDEX] = res.getLatitude();
-                    location[LONGITUDE_INDEX] = res.getLongitude();
-                }
+                location = new Coordinates(res.getLatitude(), res.getLongitude());
             });
         }
     }
 
-    public Double[] getLocation() {
+    public Coordinates getCoordinates() {
         return location;
     }
 

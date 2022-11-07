@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
-
+    id "androidx.navigation.safeargs"
 }
 
 android {
@@ -10,9 +10,10 @@ android {
 
     compileSdk 32
 
+
     defaultConfig {
         applicationId "com.inplanesight"
-        minSdk 19
+        minSdk 24
         multiDexEnabled = true
         targetSdk 32
         versionCode 1

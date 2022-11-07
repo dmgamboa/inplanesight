@@ -4,6 +4,10 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.inplanesight.models.Airport;
+
+import java.util.ArrayList;
+
 public class FlightsService extends Service {
     public FlightsService() {
     }
@@ -13,4 +17,6 @@ public class FlightsService extends Service {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+
 }

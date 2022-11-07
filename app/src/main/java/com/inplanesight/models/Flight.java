@@ -1,4 +1,6 @@
 package com.inplanesight.models;
 
-public class Flight {
+import java.io.Serializable;
+
+public class Flight implements Serializable {
 }

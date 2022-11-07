@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        requestLocation();
+    }
+
+    void requestLocation() {
         if (!locationService.hasLocationPermission()) {
             for (String permission : LocationService.REQUIRED_PERMISSIONS) {
                 permissionsLauncher.launch(permission);

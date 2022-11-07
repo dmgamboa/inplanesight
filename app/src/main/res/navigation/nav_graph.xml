@@ -11,11 +11,23 @@
         android:label="fragment_check_in"
         tools:layout="@layout/fragment_check_in" >
         <action
-            android:id="@+id/action_checkInFragment_to_findFragment2"
-            app:destination="@id/findFragment" />
+            android:id="@+id/action_airport_selected"
+            app:destination="@id/searchFragment">
+            <argument
+                android:name="selectedAirport"
+                app:argType="com.inplanesight.models.Airport" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.inplanesight.ui.check_in.SearchFragment"
+        android:label="SearchFragment" >
         <action
-            android:id="@+id/action_checkInFragment_to_flightInfoFragment"
-            app:destination="@id/flightInfoFragment" />
+            android:id="@+id/action_flight_selected"
+            app:destination="@id/findFragment" />
+        <argument
+            android:name="selectedAirport"
+            app:argType="com.inplanesight.models.Airport" />
     </fragment>
     <fragment
         android:id="@+id/flightInfoFragment"
@@ -28,9 +40,6 @@
         <action
             android:id="@+id/action_flightInfoFragment_to_findFragment"
             app:destination="@id/findFragment" />
-        <action
-            android:id="@+id/action_flightInfoFragment_to_findAirportFragment"
-            app:destination="@id/findAirportFragment" />
     </fragment>
     <fragment
         android:id="@+id/findFragment"
@@ -43,9 +52,6 @@
         <action
             android:id="@+id/action_findFragment_to_flightInfoFragment"
             app:destination="@id/flightInfoFragment" />
-        <action
-            android:id="@+id/action_findFragment_to_findAirportFragment"
-            app:destination="@id/findAirportFragment" />
     </fragment>
     <fragment
         android:id="@+id/leaderboardsFragment"
@@ -65,34 +71,7 @@
         android:label="fragment_overview"
         tools:layout="@layout/fragment_overview" >
         <action
-            android:id="@+id/action_overviewFragment_to_findAirportFragment"
-            app:destination="@id/findAirportFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/findAirportFragment"
-        android:name="com.inplanesight.ui.check_in.FindAirportFragment"
-        android:label="FindAirportFragment" >
-        <action
-            android:id="@+id/action_findAirportFragment_to_myLocationFragment"
-            app:destination="@id/myLocationFragment" />
-        <action
-            android:id="@+id/action_findAirportFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/myLocationFragment"
-        android:name="com.inplanesight.ui.check_in.MyLocationFragment"
-        android:label="MyLocationFragment" >
-        <action
-            android:id="@+id/action_myLocationFragment_to_checkInFragment"
-            app:destination="@id/checkInFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.inplanesight.ui.check_in.SearchFragment"
-        android:label="SearchFragment" >
-        <action
-            android:id="@+id/action_searchFragment_to_checkInFragment"
+            android:id="@+id/action_overviewFragment_to_checkInFragment"
             app:destination="@id/checkInFragment" />
     </fragment>
     <fragment

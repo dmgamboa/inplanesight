@@ -29,12 +29,14 @@ import com.google.android.libraries.places.api.net.FetchPhotoRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.inplanesight.BuildConfig;
 import com.inplanesight.R;
 import com.inplanesight.api.GooglePlacesAPI;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Properties;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,7 +89,6 @@ public class FindFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_find, container, false);
     }
 
@@ -98,13 +99,10 @@ public class FindFragment extends Fragment {
         // Place ID for YVR Airport
         final String placeId = "ChIJm6MnhjQLhlQRhIA0hqzMaLo";
 
-        //Get API Key
-        GooglePlacesAPI apiKey = new GooglePlacesAPI();
-
         ImageView places = (ImageView) view.findViewById(R.id.hunt_photo);
 
         // Initialize the SDK
-        Places.initialize(places.getContext(), apiKey.getApiKey());
+        Places.initialize(places.getContext(), BuildConfig.MAPS_API_KEY);
 
         // Create a new PlacesClient instance
         PlacesClient placesClient = Places.createClient(view.getContext());

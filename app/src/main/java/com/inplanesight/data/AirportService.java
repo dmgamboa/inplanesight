@@ -55,10 +55,9 @@ public class AirportService extends Service {
     }
 
     public Airport getClosestAirport(Coordinates userLocation) {
-        return airports.stream().reduce(airports.get(0), (acc, curr) -> {
-            return Coordinates.getDistance(userLocation, acc.getCoordinates())
-                    > Coordinates.getDistance(userLocation, curr.getCoordinates()) ? curr : acc;
-        });
+        return airports.stream().reduce(airports.get(0), (acc, curr) ->
+            Coordinates.getDistance(userLocation, acc.getCoordinates())
+                    > Coordinates.getDistance(userLocation, curr.getCoordinates()) ? curr : acc);
     }
 
     public int getClosestAirportIndex(Coordinates userLocation) {

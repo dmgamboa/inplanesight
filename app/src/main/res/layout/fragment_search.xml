@@ -20,7 +20,7 @@
             android:gravity="center_horizontal"
             android:text="@string/search_flights_header"
             android:textAlignment="center"
-            android:textSize="28sp" />
+            android:textSize="211sp" />
 
         <TextView
             android:id="@+id/searchFlightsAirportTxt"
@@ -30,7 +30,7 @@
             android:gravity="center_horizontal"
             android:text="@string/search_flights_airport"
             android:textAlignment="center"
-            android:textSize="28sp" />
+            android:textSize="211sp" />
     </LinearLayout>
 
 

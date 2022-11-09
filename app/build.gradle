@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.inplanesight"
-        minSdk 24
+        minSdk 26
         multiDexEnabled = true
         targetSdk 32
         versionCode 1

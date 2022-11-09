@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingVertical="50dp"
-    android:paddingHorizontal="25dp">
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/searchFlightsHeaderTxt"
             android:layout_width="match_parent"
@@ -20,7 +19,7 @@
             android:gravity="center_horizontal"
             android:text="@string/search_flights_header"
             android:textAlignment="center"
-            android:textSize="211sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/searchFlightsAirportTxt"
@@ -30,15 +29,19 @@
             android:gravity="center_horizontal"
             android:text="@string/search_flights_airport"
             android:textAlignment="center"
-            android:textSize="211sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchFlightsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:paddingVertical="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="bottom">
 

@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class AirportService extends Service {
+public class AirportViewModel extends Service {
     final static int NAME_INDEX = 1;
     final static int CITY_INDEX = 2;
     final static int COUNTRY_INDEX = 3;
@@ -27,7 +27,7 @@ public class AirportService extends Service {
     ArrayList<Airport> airports;
     Context context;
 
-    public AirportService(Context context) {
+    public AirportViewModel(Context context) {
         this.context = context;
         try {
             airports = this.fromRaw();

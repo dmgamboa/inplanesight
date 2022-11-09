@@ -1,42 +1,20 @@
 package com.inplanesight.ui.find;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.PhotoMetadata;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.net.FetchPhotoRequest;
-import com.google.android.libraries.places.api.net.FetchPlaceRequest;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.BuildConfig;
 import com.inplanesight.R;
 import com.inplanesight.api.GooglePlacesAPI;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +32,8 @@ public class FindFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private GooglePlacesAPI googlePlaceAPI;
 
     public FindFragment() {
         // Required empty public constructor
@@ -77,6 +57,11 @@ public class FindFragment extends Fragment {
         return fragment;
     }
 
+    public void setImage(Bitmap bitmap) {
+        ImageView places = (ImageView) getActivity().findViewById(R.id.hunt_photo);
+        places.setImageBitmap(bitmap);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,54 +80,23 @@ public class FindFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        googlePlaceAPI = new GooglePlacesAPI();
 
         // Place ID for YVR Airport
+        //TODO : get this as an arg from a bundle passed from search fragment
         final String placeId = "ChIJm6MnhjQLhlQRhIA0hqzMaLo";
 
         ImageView places = (ImageView) view.findViewById(R.id.hunt_photo);
 
-        // Initialize the SDK
-        Places.initialize(places.getContext(), BuildConfig.MAPS_API_KEY);
+        // Initialize the Places SDK
+        googlePlaceAPI.initialize(places.getContext(), BuildConfig.MAPS_API_KEY);
 
-        // Create a new PlacesClient instance
-        PlacesClient placesClient = Places.createClient(view.getContext());
+         //get photo bitmap:
+        try {
+            googlePlaceAPI.getPhotoBitmapFromPlace(places.getContext(), placeId, this);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Specify fields. Requests for photos must always have the PHOTO_METADATAS field.
-        final List<Place.Field> fields = Collections.singletonList(Place.Field.PHOTO_METADATAS);
-
-        // Get a Place object (this example uses fetchPlace(), but you can also use findCurrentPlace())
-        final FetchPlaceRequest placeRequest = FetchPlaceRequest.newInstance(placeId, fields);
-
-        placesClient.fetchPlace(placeRequest).addOnSuccessListener((response) -> {
-            final Place place = response.getPlace();
-
-            // Get the photo metadata.
-            final List<PhotoMetadata> metadata = place.getPhotoMetadatas();
-            if (metadata == null || metadata.isEmpty()) {
-                Log.w(TAG, "No photo metadata.");
-                return;
-            }
-            final PhotoMetadata photoMetadata = metadata.get(0);
-
-            // Get the attribution text.
-            final String attributions = photoMetadata.getAttributions();
-
-            // Create a FetchPhotoRequest.
-            final FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(photoMetadata)
-                    .setMaxWidth(1600) // Optional.
-                    .setMaxHeight(300) // Optional.
-                    .build();
-            placesClient.fetchPhoto(photoRequest).addOnSuccessListener((fetchPhotoResponse) -> {
-                Bitmap bitmap = fetchPhotoResponse.getBitmap();
-                places.setImageBitmap(bitmap);
-            }).addOnFailureListener((exception) -> {
-                if (exception instanceof ApiException) {
-                    final ApiException apiException = (ApiException) exception;
-                    Log.e(TAG, "Place not found: " + exception.getMessage());
-                    final int statusCode = apiException.getStatusCode();
-                    // TODO: Handle error with given status code.
-                }
-            });
-        });
     }
 }

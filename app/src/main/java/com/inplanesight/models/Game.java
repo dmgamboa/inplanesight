@@ -4,22 +4,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class GameModel implements Serializable {
+public class Game implements Serializable {
 
-    Coordinates airport;
-    ArrayList<HuntObject> scavengerHunt;
+    String airportCode;
+    ArrayList<Hunt> scavengerHunt;
     Date startingTimestamp;
     int score;
 
-    public GameModel(Coordinates airport) {
-        this.airport = airport;
+    public Game(String airportCode) {
+        this.airportCode = airportCode;
     }
 
-    public void addHuntObject(HuntObject item) {
+    public void addHuntObject(Hunt item) {
         scavengerHunt.add(item);
     }
 
-    public ArrayList<HuntObject> getScavengerHunt() {
+    public ArrayList<Hunt> getScavengerHunt() {
         return scavengerHunt;
     }
 

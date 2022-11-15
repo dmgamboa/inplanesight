@@ -24,6 +24,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.inplanesight.models.Coordinates;
 import com.inplanesight.ui.MainActivity;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,16 +38,10 @@ public class FirebaseAPI extends Service {
         db = FirebaseFirestore.getInstance();
     }
 
-    public static void writeFirebaseForHunt() {
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
-
+    public static void writeToFirebase(Object object, String collection) {
         // Add a new document with a generated ID
-        db.collection("hunt")
-                .add(user)
+        db.collection(collection)
+                .add(object)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -60,10 +57,10 @@ public class FirebaseAPI extends Service {
 
     }
 
-    public static String queryFirebaseForHunt(Coordinates aiport) {
-        String huntString = "";
+    public static void readFromFirebase(String airportCode, String collection, ArrayList<JSONObject> list) {
         //Query firebase for airport, return empty if nothing found
-        db.collection("hunt")
+        db.collection(collection)
+                .whereEqualTo("code", airportCode)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -71,13 +68,13 @@ public class FirebaseAPI extends Service {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("Success", document.getId() + " => " + document.getData());
+                                list.add(new JSONObject());
                             }
                         } else {
                             Log.w("Failure", "Error getting documents.", task.getException());
                         }
                     }
                 });
-        return huntString;
     }
 
     @Override

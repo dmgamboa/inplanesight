@@ -1,5 +1,7 @@
 package com.inplanesight.models;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class Coordinates implements Serializable {
@@ -11,6 +13,15 @@ public class Coordinates implements Serializable {
     public Coordinates(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Coordinates(JSONObject coordinates) {
+        try {
+            this.latitude = coordinates.getDouble("latitude");
+            this.longitude = coordinates.getDouble("longitude");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Double getLatitude() {

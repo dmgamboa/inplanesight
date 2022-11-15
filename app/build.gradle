@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.databinding:databinding-runtime:7.1.2'
     def material_version = "1.7.0"
     def nav_version = "2.5.3"
     def google_places_version = "2.7.0"
@@ -48,6 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
 
     // Google Places
     implementation "com.google.android.libraries.places:places:$google_places_version"

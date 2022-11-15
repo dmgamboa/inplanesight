@@ -18,7 +18,7 @@ import com.google.android.gms.location.LocationServices;
 import com.inplanesight.models.Coordinates;
 
 
-public class LocationService extends Service {
+public class LocationViewModel extends Service {
     final public static String[] REQUIRED_PERMISSIONS = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION
@@ -29,7 +29,7 @@ public class LocationService extends Service {
     Coordinates location;
     Context context;
 
-    public LocationService(Context context) {
+    public LocationViewModel(Context context) {
         this.context = context;
         locationProvider = LocationServices.getFusedLocationProviderClient(context);
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -42,7 +42,7 @@ public class LocationService extends Service {
     }
 
     @SuppressLint("MissingPermission")
-    public void storeLocation() {
+public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
             locationProvider.getLastLocation().addOnCompleteListener(task -> {
                 Location res = task.getResult();

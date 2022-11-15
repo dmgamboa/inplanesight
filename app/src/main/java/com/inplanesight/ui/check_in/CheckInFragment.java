@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -15,18 +16,19 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
-import com.inplanesight.data.AirportService;
-import com.inplanesight.data.LocationService;
+import com.inplanesight.data.AirportViewModel;
+import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.models.Airport;
 import com.inplanesight.models.Coordinates;
 import com.inplanesight.ui.common.NavlessFragment;
 
 import java.util.ArrayList;
 
-public class CheckInFragment extends NavlessFragment implements AdapterView.OnItemSelectedListener {
-    LocationService locationService;
-    AirportService airportService;
+public class CheckInFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+    LocationViewModel locationService;
+    AirportViewModel airportService;
     ArrayList<String> airportOpts;
     Airport selectedAirport;
 
@@ -42,8 +44,11 @@ public class CheckInFragment extends NavlessFragment implements AdapterView.OnIt
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        locationService = new LocationService(getActivity());
-        airportService = new AirportService(getActivity());
+        locationService = new LocationViewModel(getActivity());
+        airportService = new AirportViewModel(getActivity());
+
+        BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
+        bottomNav.setVisibility(View.GONE);
 
         Button btnSelectAirport = getActivity().findViewById(R.id.checkInBtnSelectAirport);
         btnSelectAirport.setOnClickListener(this::selectAirport);

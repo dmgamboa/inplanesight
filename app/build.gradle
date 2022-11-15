@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.inplanesight"
-        minSdk 24
+        minSdk 26
         multiDexEnabled = true
         targetSdk 32
         versionCode 1
@@ -39,6 +39,7 @@ dependencies {
     implementation 'androidx.databinding:databinding-runtime:7.1.2'
     def material_version = "1.7.0"
     def nav_version = "2.5.3"
+    def okttp3_version = "4.10.0"
     def google_places_version = "2.7.0"
     def services_location_version = "21.0.1"
 
@@ -60,6 +61,9 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
+
+    // OkHTTP3
+    implementation "com.squareup.okhttp3:okhttp:$okttp3_version"
 
     // UI-Related
     implementation "com.google.android.material:material:$material_version"

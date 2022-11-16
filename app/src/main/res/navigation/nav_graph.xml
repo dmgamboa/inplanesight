@@ -78,5 +78,17 @@
         android:id="@+id/accountFragment"
         android:name="com.inplanesight.ui.account.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.inplanesight.ui.common.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
 </navigation>

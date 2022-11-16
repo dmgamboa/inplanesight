@@ -40,4 +40,11 @@
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>
     <string name="use_my_location">Suggest Based on Location</string>
+    <string name="account">Account</string>
+    <string name="nickname">Nickname:</string>
+    <string name="email">Email:</string>
+    <string name="data">Data</string>
+    <string name="data2">Data</string>
+    <string name="sign_out">Sign out</string>
+    <string name="verify_email">Verify Email</string>
 </resources>

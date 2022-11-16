@@ -25,13 +25,15 @@ public class Hunt implements Serializable {
         try {
             this.name = hunt.getString("name");
             this.id = hunt.getString("id");
-            this.imageUrl = hunt.getString("imageUrl");
-            this.coordinates = new Coordinates(hunt.getJSONObject("coordinates"));
+            this.imageUrl = hunt.getString("places_id");
+            this.coordinates = new Coordinates(hunt.getJSONObject("location"));
             this.timestampFound = null;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public String getImageUrl() { return imageUrl; }
 
     public Coordinates getCoordinates() {
         return coordinates;

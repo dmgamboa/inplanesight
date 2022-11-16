@@ -24,7 +24,11 @@
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_flight_selected"
-            app:destination="@id/findFragment" />
+            app:destination="@id/findFragment" >
+            <argument
+                android:name="selectedAirport"
+                app:argType="com.inplanesight.models.Airport" />
+        </action>
         <argument
             android:name="selectedAirport"
             app:argType="com.inplanesight.models.Airport" />
@@ -52,6 +56,16 @@
         <action
             android:id="@+id/action_findFragment_to_flightInfoFragment"
             app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_findFragment_to_huntFragment"
+            app:destination="@id/huntFragment" >
+            <argument
+                android:name="selectedAirport"
+                app:argType="com.inplanesight.models.Airport" />
+        </action>
+        <argument
+            android:name="selectedAirport"
+            app:argType="com.inplanesight.models.Airport" />
     </fragment>
     <fragment
         android:id="@+id/leaderboardsFragment"
@@ -90,5 +104,17 @@
         <action
             android:id="@+id/action_signInFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/huntFragment"
+        android:name="com.inplanesight.ui.find.HuntFragment"
+        android:label="fragment_hunt"
+        tools:layout="@layout/fragment_hunt" >
+        <action
+            android:id="@+id/action_huntFragment_to_findFragment"
+            app:destination="@id/findFragment" />
+        <argument
+            android:name="selectedAirport"
+            app:argType="com.inplanesight.models.Airport" />
     </fragment>
 </navigation>

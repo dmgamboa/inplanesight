@@ -42,7 +42,7 @@ public class LocationViewModel extends Service {
     }
 
     @SuppressLint("MissingPermission")
-public void storeLocation() {
+    public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
             locationProvider.getLastLocation().addOnCompleteListener(task -> {
                 Location res = task.getResult();

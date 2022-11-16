@@ -35,7 +35,6 @@
     <string name="score">Score</string>
     <string name="time">Time</string>
     <string name="avatar_img">Avatar image</string>
-
     <string name="Placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>
@@ -47,4 +46,6 @@
     <string name="data2">Data</string>
     <string name="sign_out">Sign out</string>
     <string name="verify_email">Verify Email</string>
+    <string name="end_hunt">End Hunt</string>
+    <string name="found_location">Found Location!</string>
 </resources>

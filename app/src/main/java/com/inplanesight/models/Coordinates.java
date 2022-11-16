@@ -17,8 +17,8 @@ public class Coordinates implements Serializable {
 
     public Coordinates(JSONObject coordinates) {
         try {
-            this.latitude = coordinates.getDouble("latitude");
-            this.longitude = coordinates.getDouble("longitude");
+            this.latitude = coordinates.getDouble("lat");
+            this.longitude = coordinates.getDouble("lng");
         } catch (Exception e) {
             e.printStackTrace();
         }

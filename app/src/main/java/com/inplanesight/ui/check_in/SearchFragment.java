@@ -67,7 +67,11 @@ public class SearchFragment extends NavlessFragment {
         airportTxt.setText(selectedAirport.toString());
 
         Button confirmBtn = getActivity().findViewById(R.id.searchFlightsBtnSelectFlight);
-        confirmBtn.setOnClickListener((e) -> { Navigation.findNavController(view).navigate(R.id.action_flight_selected);});
+        confirmBtn.setOnClickListener((e) -> {
+                SearchFragmentDirections.ActionFlightSelected action
+                        = SearchFragmentDirections.actionFlightSelected(selectedAirport);
+                Navigation.findNavController(view).navigate(action);
+        });
 
         Button backBtn = getActivity().findViewById(R.id.searchFlightsBtnBack);
         backBtn.setOnClickListener((e) -> { Navigation.findNavController(view).popBackStack(); });

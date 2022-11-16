@@ -29,12 +29,16 @@ public class GameViewModel extends ViewModel {
         game = new Game(airportCode);
     }
 
+    public Game getGame() {
+        return game;
+    }
+
     // Query firebase based on location (airport) to check if location has available hunt if not query google places
     public void checkDatabase () {
         FirebaseAPI.readFromFirebase(airportCode, "hunt", huntList);
         if (huntList.size() < 1) {
-//            FirebaseAPI.writeToFirebase(new Hunt(GooglePlacesAPI.getHuntObject(airportCode)), "hunt");
-//            game.getScavengerHunt().add(new Hunt(GooglePlacesAPI.getHuntObject(airportCode)));
+//            FirebaseAPI.writeToFirebase(new Hunt(GooglePlacesAPI.getPlaces(airportCode)), "hunt");
+//            game.getScavengerHunt().add(new Hunt(GooglePlacesAPI.getPlaces(airportCode)));
         } else {
             for (JSONObject hunt : huntList) {
                 game.getScavengerHunt().add(new Hunt(hunt));

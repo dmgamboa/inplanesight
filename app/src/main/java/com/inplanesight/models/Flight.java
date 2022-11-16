@@ -5,17 +5,24 @@ import java.time.LocalDateTime;
 
 public class Flight implements Serializable {
     private String number;
-    /** TODO: Implement origin / destination as Airport */
+    private String status;
+    /**
+     * TODO: Implement origin / destination as Airport
+     */
 //    private Airport origin;
 //    private Airport destination;
     private String origin;
     private String destination;
     private String terminal;
-    private String gate; /** Not always provided */
+    private String gate;
+    /**
+     * Not always provided
+     */
     private LocalDateTime time;
 
-    public Flight(String number, String origin, String destination, String terminal, String gate, LocalDateTime time) {
+    public Flight(String number, String status, String origin, String destination, String terminal, String gate, LocalDateTime time) {
         this.number = number;
+        this.status = status;
         this.origin = origin;
         this.destination = destination;
         this.terminal = terminal;
@@ -23,7 +30,9 @@ public class Flight implements Serializable {
         this.time = time;
     }
 
-    /** TODO: Implement origin / destination as Airport */
+    /**
+     * TODO: Implement origin / destination as Airport
+     */
 //    public Flight(String number, Airport origin, Airport destination, int terminal, String gate, LocalDateTime time) {
 //        this.number = number;
 //        this.origin = origin;
@@ -32,7 +41,6 @@ public class Flight implements Serializable {
 //        this.gate = gate;
 //        this.time = time;
 //    }
-
     public String getNumber() {
         return number;
     }
@@ -40,6 +48,10 @@ public class Flight implements Serializable {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 
     public String getOrigin() {
         return origin;

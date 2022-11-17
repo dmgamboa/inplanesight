@@ -1,7 +1,7 @@
 package com.inplanesight.api;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -12,14 +12,22 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.FetchPhotoRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.inplanesight.BuildConfig;
 import com.inplanesight.ui.find.FindFragment;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class GooglePlacesAPI {
 
-// Initialize the SDK
+    // Initialize the SDK
     public void initialize(Context c, String apiKey) {
         Places.initialize(c, apiKey);
     }
@@ -36,7 +44,7 @@ public class GooglePlacesAPI {
 
         PhotoParams myParams = new PhotoParams(placesClient, placeRequest, findFragment);
 
-        MyAsyncTask task = new MyAsyncTask();
+        getBitmapAsyncTask task = new getBitmapAsyncTask();
         task.execute(myParams);
     }
 
@@ -52,7 +60,7 @@ public class GooglePlacesAPI {
         }
     }
 
-    class MyAsyncTask extends AsyncTask<PhotoParams, Void, Void> {
+    class getBitmapAsyncTask extends AsyncTask<PhotoParams, Void, Void> {
 
         @Override
         protected Void doInBackground(PhotoParams... params) {
@@ -97,8 +105,58 @@ public class GooglePlacesAPI {
 
     }
 
+    @SuppressLint("MissingPermission")
+    public void getNearbyPlaces(String lat, String lng, FindFragment findFragment) throws IOException {
+        GetNearbyPlacesAsyncTask task = new GetNearbyPlacesAsyncTask();
+        PlacesParams placesParams = new PlacesParams(lat, lng, findFragment);
+        task.execute(placesParams);
+    }
+
+    static class PlacesParams {
+        String lat;
+        String lng;
+        FindFragment findFragment;
+
+        public PlacesParams(String lat, String lng, FindFragment findFragment) {
+            this.lat = lat;
+            this.lng = lng;
+            this.findFragment = findFragment;
+        }
+    }
+
+
+    static class GetNearbyPlacesAsyncTask extends AsyncTask<PlacesParams, Void, Void> {
+
+        @Override
+        protected Void doInBackground(PlacesParams... params) {
+            String lat = params[0].lat;
+            String lng = params[0].lng;
+            FindFragment findFragment = params[0].findFragment;
+            String apiKey = BuildConfig.MAPS_API_KEY;
+
+            String urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+                    + lat + "%2C" + lng + "&radius=2500&key=" + apiKey;
+//                    + "&pagetoken=AW30NDzeKHghL3BxoMKgRvYU0pi3ev3JHuPanKgTfadT98cO9Fj1wXdWFHnw6D4DdXxnTwmWelE5TmT5PH0kK6wiSgAdJx1QrN27BpXJKlISNCNnOE_CW6Dyxd1i6RkOwLhmMLnO2WFZUSjv6YzexSrdemKWK4Rl7V_ssec1PLhUo7ldZygSfMTPYawBNsdCwHiJtuExaxq4X6sMdtvELAIrIRuFtujtceOWDZvNZbb5OsdUojelJPXfXfCE73uBbhyYb-LFqU9omtPNot4YquuE5RbPMHohRWFmf72zNEyK-eqaT_oklN0DaTeIgGNV4QGdLRRnqETPSaDG41vdXZJnfCOudCrUNZI8X2JmPm-mxpZ8jF_Qr377SCVPa5c8jEdFb9bHpnbgj7c1O9Azr9q8XaeJXL_zbQ48-dBO54Utjg6P";
+
+            OkHttpClient client = new OkHttpClient().newBuilder().build();
+            Request request = new Request.Builder()
+                    .url(urlString)
+                    .addHeader("Accept", "application/json")
+                    .method("GET", null)
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                findFragment.testResponse(response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
 }
 
-/*
- *
- */

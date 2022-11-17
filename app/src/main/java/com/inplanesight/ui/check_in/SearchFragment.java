@@ -76,12 +76,4 @@ public class SearchFragment extends NavlessFragment {
         Button backBtn = getActivity().findViewById(R.id.searchFlightsBtnBack);
         backBtn.setOnClickListener((e) -> { Navigation.findNavController(view).popBackStack(); });
     }
-
-    @Override
-    public void onDestroyView() {
-        BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
-        bottomNav.setVisibility(View.VISIBLE);
-
-        super.onDestroyView();
-    }
 }

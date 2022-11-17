@@ -1,62 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingVertical="50dp"
-    android:paddingHorizontal="25dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/searchFlightsHeaderTxt"
+
+    <ImageView
+        android:id="@+id/checkInBgImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/check_in_header"
-        android:textAlignment="center"
-        android:textSize="36sp" />
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="30dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/checkin_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="50dp">
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="50dp">
+
         <TextView
-            android:id="@+id/checkInTxt"
+            android:id="@+id/searchFlightsHeaderTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_in_text"
-            android:textSize="24sp"/>
+            android:fontFamily="@font/sono_bold"
+            android:gravity="center_horizontal"
+            android:text="@string/check_in_header"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/aqua"
+            android:textSize="36sp" />
 
-        <Spinner
-            android:id="@+id/checkInAirportSpinner"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/checkInTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/check_in_text"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/checkInAirportInput"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/aqua"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/checkInBtnSuggestAirport"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/aqua"
+                    app:srcCompat="@drawable/ic_suggest_location" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/checkInBtnSelectAirport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sono_bold"
+                android:text="@string/check_in_select_airport"
+                android:textSize="18sp"
+                app:backgroundTint="@color/orange" />
+        </LinearLayout>
+
     </LinearLayout>
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="bottom">
-
-        <Button
-            android:id="@+id/checkInBtnSelectAirport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/check_in_select_airport"
-            app:backgroundTint="@color/orange" />
-
-        <Button
-            android:id="@+id/checkInBtnSuggestAirport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/check_in_suggest_airport" />
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

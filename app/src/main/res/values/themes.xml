@@ -5,14 +5,19 @@
         <item name="colorPrimary">@color/teal_200</item>
         <item name="colorPrimaryVariant">@color/marine_blue</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/orange</item>
         <item name="colorSecondaryVariant">@color/marine_blue</item>
         <item name="colorOnSecondary">@color/black</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Remove the Action Bar by default -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:fontFamily">@font/sono</item>
     </style>
 </resources>

@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,7 +24,6 @@ import com.inplanesight.data.AirportViewModel;
 import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.models.Airport;
 import com.inplanesight.models.Coordinates;
-import com.inplanesight.ui.common.NavlessFragment;
 
 import java.util.ArrayList;
 
@@ -53,16 +54,16 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
         Button btnSelectAirport = getActivity().findViewById(R.id.checkInBtnSelectAirport);
         btnSelectAirport.setOnClickListener(this::selectAirport);
 
-        Button btnSuggestAirport = getActivity().findViewById(R.id.checkInBtnSuggestAirport);
+        ImageButton btnSuggestAirport = getActivity().findViewById(R.id.checkInBtnSuggestAirport);
         btnSuggestAirport.setOnClickListener(this::suggestAirport);
 
-        Spinner airportSpinner = getActivity().findViewById(R.id.checkInAirportSpinner);
+        Spinner selectedAirport = getActivity().findViewById(R.id.checkInAirportInput);
         airportOpts = airportService.getSpinnerOpts();
         ArrayAdapter<String> data = new ArrayAdapter<>(
                 getActivity(), android.R.layout.simple_spinner_item, airportOpts);
         data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        airportSpinner.setAdapter(data);
-        airportSpinner.setOnItemSelectedListener(this);
+        selectedAirport.setAdapter(data);
+        selectedAirport.setOnItemSelectedListener(this);
 
         locationService.storeLocation();
     }
@@ -79,7 +80,7 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
         locationService.storeLocation();
         Coordinates userLocation = locationService.getCoordinates();
         int closestAirportIndex = airportService.getClosestAirportIndex(userLocation);
-        Spinner airportSpinner = getActivity().findViewById(R.id.checkInAirportSpinner);
+        Spinner airportSpinner = getActivity().findViewById(R.id.checkInAirportInput);
         airportSpinner.setSelection(closestAirportIndex);
         selectedAirport = airportService.getAirport(closestAirportIndex);
 

@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class FlightSearchViewModel extends ViewModel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm");
         LocalDateTime currentTime = LocalDateTime.now();
         String fromTime = formatter.format(currentTime);
-        String toTime = formatter.format(currentTime.plusHours(3));
+        String toTime = formatter.format(currentTime.plusHours(1));
 
         String url = "https://" + BuildConfig.AERODATABOX_API_HOST + "/flights/airports/icao/"
                 + airport.getCode() + "/" + fromTime + "/" + toTime
@@ -56,7 +57,7 @@ public class FlightSearchViewModel extends ViewModel {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
-                .addHeader("X-RapidAPI-Key", "caca2bc786msh0a337a61c528909p10944ajsndd9432d87e49")
+                .addHeader("X-RapidAPI-Key", BuildConfig.AERODATABOX_API_KEY)
                 .addHeader("X-RapidAPI-Host", "aerodatabox.p.rapidapi.com")
                 .build();
 
@@ -76,23 +77,20 @@ public class FlightSearchViewModel extends ViewModel {
                     for (int i = 0; i < departures.length(); i++) {
                         JSONObject flight = departures.getJSONObject(i);
                         JSONObject departureInformation = flight.getJSONObject("departure");
-                        JSONObject arrivalInformation = flight.getJSONObject("arrival");
+                        JSONObject arrivalAirport = flight.getJSONObject("arrival").getJSONObject("airport");
 
+                        String airline = flight.getJSONObject("airline").getString("name");
                         String number = flight.getString("number");
                         String status = flight.getString("status");
-                        /** TODO: Fix this */
-                        String origin = airport.getName() + " / " + airport.getCode();
-                        String destination = "Test Airport / CODE";
-                        String terminal = "F";
-                        String gate = "32D";
+                        String destination = arrivalAirport.getString("name") + " (" + arrivalAirport.getString("iata") + ")";
+                        String terminal = departureInformation.has("terminal") ? departureInformation.getString("terminal") : "";
+                        String gate = departureInformation.has("gate") ? departureInformation.getString("gate") : "";
 
-//                        String terminal = departureInformation.getString("terminal");
-//                        String gate = departureInformation.getString("gate");
+                        String departureTime = departureInformation.getString("scheduledTimeLocal").replace(" ", "T");
+                        ZonedDateTime departureTimeZoned = ZonedDateTime.parse(departureTime);
+                        LocalDateTime departureTimeLocal = departureTimeZoned.toLocalDateTime();
 
-//                        LocalDateTime departureTime = LocalDateTime.parse(departureInformation.getString("scheduledTimeUtc"));
-
-                        /** TODO: Fix time */
-                        res.add(new Flight(number, status, origin, destination, terminal, gate, LocalDateTime.now()));
+                        res.add(new Flight(airline, number, status, destination, terminal, gate, departureTimeLocal));
                     }
 
                     flights.postValue(res);

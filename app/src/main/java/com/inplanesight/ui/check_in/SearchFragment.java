@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -28,7 +29,7 @@ import com.inplanesight.ui.common.NavlessFragment;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SearchFragment extends NavlessFragment {
+public class SearchFragment extends Fragment {
 
     Airport selectedAirport;
 

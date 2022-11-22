@@ -21,6 +21,14 @@
     <string name="search_flights_select_btn">Select Flight</string>
     <string name="search_flights_back_btn">Go back</string>
 
+    <!-- Flight Info -->
+    <string name="flight_info_flight_number">Flight Number</string>
+    <string name="flight_info_terminal">Terminal</string>
+    <string name="flight_info_gate">Gate</string>
+    <string name="flight_info_destination">Destination</string>
+    <string name="flight_info_departing_time">Departs At</string>
+    <string name="flight_info_status">Status</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overviewBtnText">Get Started</string>
     <string name="hunt_page_title">Scavenger Hunt</string>
@@ -35,7 +43,7 @@
     <string name="score">Score</string>
     <string name="time">Time</string>
     <string name="avatar_img">Avatar image</string>
-    <string name="Placeholder">Placeholder</string>
+    <string name="placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
     <string name="test">test</string>
     <string name="use_my_location">Suggest Based on Location</string>

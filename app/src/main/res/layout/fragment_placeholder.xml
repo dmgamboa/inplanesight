@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_row="0"
-        android:text="@string/Placeholder" />
+        android:text="@string/placeholder" />
 
     <TextView
         android:id="@+id/testView"

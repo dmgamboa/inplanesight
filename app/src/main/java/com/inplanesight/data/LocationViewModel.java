@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
@@ -45,8 +46,12 @@ public class LocationViewModel extends Service {
     public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
             locationProvider.getLastLocation().addOnCompleteListener(task -> {
-                Location res = task.getResult();
-                location = new Coordinates(res.getLatitude(), res.getLongitude());
+                try{
+                    Location res = task.getResult();
+                    location = new Coordinates(res.getLatitude(), res.getLongitude());
+                } catch (Exception e) {
+                    Log.d("storeLocation", e.getMessage());
+                }
             });
         }
     }

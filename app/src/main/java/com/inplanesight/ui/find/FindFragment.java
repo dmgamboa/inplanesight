@@ -1,5 +1,7 @@
 package com.inplanesight.ui.find;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -8,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,13 @@ import com.inplanesight.BuildConfig;
 import com.inplanesight.R;
 import com.inplanesight.api.GooglePlacesAPI;
 import com.inplanesight.models.Airport;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Response;
 
 public class FindFragment extends Fragment {
     private String mParam1;
@@ -33,6 +43,10 @@ public class FindFragment extends Fragment {
     public void setImage(Bitmap bitmap) {
         ImageView places = (ImageView) getActivity().findViewById(R.id.hunt_photo);
         places.setImageBitmap(bitmap);
+    }
+
+    public void testResponse(Response response) throws IOException, JSONException {
+        Log.d("BING", "testResponse: " + response.body().string());
     }
 
     @Override
@@ -63,7 +77,7 @@ public class FindFragment extends Fragment {
         // Initialize the Places SDK
         googlePlaceAPI.initialize(places.getContext(), BuildConfig.MAPS_API_KEY);
 
-         //get photo bitmap:
+        //get photo bitmap:
         try {
             googlePlaceAPI.getPhotoBitmapFromPlace(places.getContext(), placeId, this);
         } catch (InterruptedException e) {
@@ -76,5 +90,12 @@ public class FindFragment extends Fragment {
                     = FindFragmentDirections.actionFindFragmentToHuntFragment(selectedAirport);
             Navigation.findNavController(view).navigate(action);
         });
+        //get Nearby Places test call.
+        try {
+            googlePlaceAPI.getNearbyPlaces("49.1902", "-123.1837", this);
+        } catch (IOException e) {
+            Log.d(TAG, "onViewCreated: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

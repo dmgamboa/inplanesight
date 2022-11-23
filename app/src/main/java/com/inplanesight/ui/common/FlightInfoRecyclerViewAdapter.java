@@ -18,12 +18,19 @@ import java.time.format.DateTimeFormatter;
 
 public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightInfoRecyclerViewAdapter.FlightViewHolder> {
 
+    public interface OnFlightClicked {
+        void f (Flight flight);
+    }
+
     Context context;
     Flight[] flights;
+    OnFlightClicked onClicked;
+    Flight selectedFlight;
 
-    public FlightInfoRecyclerViewAdapter(Context context, Flight[] flights) {
+    public FlightInfoRecyclerViewAdapter(Context context, Flight[] flights, OnFlightClicked onClicked) {
         this.context = context;
         this.flights = flights;
+        this.onClicked = onClicked;
     }
 
     @NonNull
@@ -56,11 +63,10 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
         }
 
         holder.terminal.setText(flight.getTerminal());
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
-        holder.departureTime.setText(formatter.format(flight.getTime()));
-
+        holder.departureTime.setText(flight.getTimeAsString());
         holder.status.setText(flight.getStatus());
+
+        this.selectedFlight = flight;
     }
 
     @Override
@@ -91,6 +97,8 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
             destination = itemView.findViewById(R.id.flightInfoDestinationVal);
             departureTime = itemView.findViewById(R.id.flightInfoDepartureTimeVal);
             status = itemView.findViewById(R.id.flightInfoStatusVal);
+
+            itemView.setOnClickListener(view -> onClicked.f(selectedFlight));
         }
     }
 }

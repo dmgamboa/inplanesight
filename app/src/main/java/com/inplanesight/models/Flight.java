@@ -2,6 +2,7 @@ package com.inplanesight.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Flight implements Serializable {
     private String airline;
@@ -68,6 +69,11 @@ public class Flight implements Serializable {
 
     public LocalDateTime getTime() {
         return time;
+    }
+
+    public String getTimeAsString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
+        return formatter.format(time);
     }
 
     public void setTime(LocalDateTime time) {

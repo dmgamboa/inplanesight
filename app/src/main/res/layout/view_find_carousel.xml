@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/findImgFrame"
+        android:layout_alignBottom="@id/findImgFrame"
+        android:layout_alignLeft="@id/findImgFrame"
+        android:layout_alignRight="@id/findImgFrame"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/findImg"
+            android:layout_width="275dp"
+            android:layout_height="360dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/test_hunt_image"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/findImgFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/plane_window"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/findImgFrame">
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/quantum_grey"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/quantum_grey"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/quantum_grey"/>
+    </LinearLayout>
+
+</RelativeLayout>

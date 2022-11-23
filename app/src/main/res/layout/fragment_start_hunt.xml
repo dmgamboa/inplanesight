@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    tools:context=".ui.find.StartHuntFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp">
+
+    <TextView
+        android:id="@+id/startHuntHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_hunt_header"
+        android:fontFamily="@font/sono_bold"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:textColor="@color/marine_blue"
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/startHuntTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_hunt_txt"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:paddingBottom="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/startHuntBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_hunt_btn_txt"
+            android:backgroundTint="@color/orange"
+            android:textSize="25sp"/>
+    </LinearLayout>
+</LinearLayout>

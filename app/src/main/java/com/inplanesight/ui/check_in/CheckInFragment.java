@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
 import com.inplanesight.data.AirportViewModel;
 import com.inplanesight.data.LocationViewModel;
+import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
 import com.inplanesight.models.Coordinates;
 
@@ -70,9 +72,9 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
 
     public void selectAirport(View view) {
         if (selectedAirport != null) {
-            CheckInFragmentDirections.ActionAirportSelected action
-                    = CheckInFragmentDirections.actionAirportSelected(selectedAirport);
-            Navigation.findNavController(view).navigate(action);
+            StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
+            state.setAirport(selectedAirport);
+            Navigation.findNavController(view).navigate(R.id.action_checkInFragment_to_searchFragment);
         }
     }
 

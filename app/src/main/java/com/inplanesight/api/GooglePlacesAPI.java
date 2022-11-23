@@ -13,7 +13,7 @@ import com.google.android.libraries.places.api.net.FetchPhotoRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.inplanesight.BuildConfig;
-import com.inplanesight.ui.find.FindFragment;
+import com.inplanesight.ui.find.FindFragment02;
 
 import org.json.JSONException;
 
@@ -32,7 +32,7 @@ public class GooglePlacesAPI {
         Places.initialize(c, apiKey);
     }
 
-    public void getPhotoBitmapFromPlace(Context c, String placeId, FindFragment findFragment) throws InterruptedException {
+    public void getPhotoBitmapFromPlace(Context c, String placeId, FindFragment02 findFragment) throws InterruptedException {
         // Create a new PlacesClient instance
         PlacesClient placesClient = Places.createClient(c);
 
@@ -51,9 +51,9 @@ public class GooglePlacesAPI {
     static class PhotoParams {
         PlacesClient placesClient;
         FetchPlaceRequest fetchPlaceRequest;
-        FindFragment findFragment;
+        FindFragment02 findFragment;
 
-        public PhotoParams(PlacesClient placesClient, FetchPlaceRequest fetchPlaceRequest, FindFragment findFragment) {
+        public PhotoParams(PlacesClient placesClient, FetchPlaceRequest fetchPlaceRequest, FindFragment02 findFragment) {
             this.placesClient = placesClient;
             this.fetchPlaceRequest = fetchPlaceRequest;
             this.findFragment = findFragment;
@@ -66,7 +66,7 @@ public class GooglePlacesAPI {
         protected Void doInBackground(PhotoParams... params) {
             PlacesClient placesClient = params[0].placesClient;
             FetchPlaceRequest placeRequest = params[0].fetchPlaceRequest;
-            FindFragment findFragment = params[0].findFragment;
+            FindFragment02 findFragment = params[0].findFragment;
 
             placesClient.fetchPlace(placeRequest).addOnSuccessListener((response) -> {
                 final Place place = response.getPlace();
@@ -106,7 +106,7 @@ public class GooglePlacesAPI {
     }
 
     @SuppressLint("MissingPermission")
-    public void getNearbyPlaces(String lat, String lng, FindFragment findFragment) throws IOException {
+    public void getNearbyPlaces(String lat, String lng, FindFragment02 findFragment) throws IOException {
         GetNearbyPlacesAsyncTask task = new GetNearbyPlacesAsyncTask();
         PlacesParams placesParams = new PlacesParams(lat, lng, findFragment);
         task.execute(placesParams);
@@ -115,9 +115,9 @@ public class GooglePlacesAPI {
     static class PlacesParams {
         String lat;
         String lng;
-        FindFragment findFragment;
+        FindFragment02 findFragment;
 
-        public PlacesParams(String lat, String lng, FindFragment findFragment) {
+        public PlacesParams(String lat, String lng, FindFragment02 findFragment) {
             this.lat = lat;
             this.lng = lng;
             this.findFragment = findFragment;
@@ -131,7 +131,7 @@ public class GooglePlacesAPI {
         protected Void doInBackground(PlacesParams... params) {
             String lat = params[0].lat;
             String lng = params[0].lng;
-            FindFragment findFragment = params[0].findFragment;
+            FindFragment02 findFragment = params[0].findFragment;
             String apiKey = BuildConfig.MAPS_API_KEY;
 
             String urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="

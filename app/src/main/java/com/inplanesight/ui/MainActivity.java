@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -13,7 +14,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
+import com.inplanesight.data.FlightSearchViewModel;
 import com.inplanesight.data.LocationViewModel;
+import com.inplanesight.data.StateViewModel;
 
 public class MainActivity extends AppCompatActivity {
     LocationViewModel locationService;
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Why you gotta be like this :(", Toast.LENGTH_SHORT);
             }
         });
-
     }
 
     @Override

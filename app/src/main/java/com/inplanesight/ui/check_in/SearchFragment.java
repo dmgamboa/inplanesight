@@ -21,13 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.inplanesight.R;
 import com.inplanesight.data.FlightSearchViewModel;
-import com.inplanesight.models.Airport;
+import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Flight;
 import com.inplanesight.ui.common.FlightInfoRecyclerViewAdapter;
 
 public class SearchFragment extends Fragment {
 
-    Airport selectedAirport;
+    StateViewModel state;
 
     public SearchFragment() {}
 
@@ -39,7 +39,6 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        selectedAirport = SearchFragmentArgs.fromBundle(getArguments()).getSelectedAirport();
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
@@ -47,10 +46,12 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
+
         RecyclerView flightList = requireActivity().findViewById(R.id.searchFlightsRecyclerView);
 
         FlightSearchViewModel flightSearch = new ViewModelProvider(this).get(FlightSearchViewModel.class);
-        flightSearch.getFlights(selectedAirport).observe(getViewLifecycleOwner(), models -> {
+        flightSearch.getFlights(state.getAirport()).observe(getViewLifecycleOwner(), models -> {
             if (models != null) {
                 Flight[] flights = new Flight[models.size()];
                 flights = models.toArray(flights);
@@ -61,7 +62,7 @@ public class SearchFragment extends Fragment {
         });
 
         TextView airportTxt = requireActivity().findViewById(R.id.searchFlightsAirportTxt);
-        airportTxt.setText(selectedAirport.toString());
+        airportTxt.setText(state.getAirport().toString());
 
         Button backBtn = requireActivity().findViewById(R.id.searchFlightsBtnBack);
         backBtn.setOnClickListener((e) -> Navigation.findNavController(view).popBackStack() );
@@ -92,10 +93,9 @@ public class SearchFragment extends Fragment {
         });
 
         selectBtn.setOnClickListener((e) -> {
+            state.setFlight(flight);
             popupWindow.dismiss();
-            SearchFragmentDirections.ActionFlightSelected action
-                    = SearchFragmentDirections.actionFlightSelected(selectedAirport);
-            Navigation.findNavController(requireView()).navigate(action);
+            Navigation.findNavController(requireView()).navigate(R.id.action_searchFragment_to_startHuntFragment);
         });
     }
 }

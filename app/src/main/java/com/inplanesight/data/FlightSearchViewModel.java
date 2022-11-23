@@ -48,7 +48,7 @@ public class FlightSearchViewModel extends ViewModel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm");
         LocalDateTime currentTime = LocalDateTime.now();
         String fromTime = formatter.format(currentTime);
-        String toTime = formatter.format(currentTime.plusHours(1));
+        String toTime = formatter.format(currentTime.plusHours(6));
 
         String url = "https://" + BuildConfig.AERODATABOX_API_HOST + "/flights/airports/icao/"
                 + airport.getCode() + "/" + fromTime + "/" + toTime

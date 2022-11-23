@@ -22,7 +22,7 @@
     <string name="search_flights_back_btn">Go back</string>
     <string name="search_flights_popup_heading">Is this your flight?</string>
 
-    <!-- Flight Info -->
+    <!-- Flight Info Component -->
     <string name="flight_info_flight_number">Flight Number</string>
     <string name="flight_info_terminal">Terminal</string>
     <string name="flight_info_gate">Gate</string>
@@ -36,6 +36,8 @@
     <string name="start_hunt_btn_txt">Let\'s go</string>
     <string name="hunt_btn">Found It!</string>
 
+    <!-- Flight Info -->
+    <string name="flight_info_header">Your upcoming flight</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overviewBtnText">Get Started</string>

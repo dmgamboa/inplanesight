@@ -33,6 +33,11 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
         this.onClicked = onClicked;
     }
 
+    public FlightInfoRecyclerViewAdapter(Context context, Flight[] flights) {
+        this.context = context;
+        this.flights = flights;
+    }
+
     @NonNull
     @Override
     public FlightViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -98,7 +103,9 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
             departureTime = itemView.findViewById(R.id.flightInfoDepartureTimeVal);
             status = itemView.findViewById(R.id.flightInfoStatusVal);
 
-            itemView.setOnClickListener(view -> onClicked.f(selectedFlight));
+            if (onClicked != null) {
+                itemView.setOnClickListener(view -> onClicked.f(selectedFlight));
+            }
         }
     }
 }

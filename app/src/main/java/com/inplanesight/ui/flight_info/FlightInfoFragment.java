@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,9 +51,38 @@ public class FlightInfoFragment extends Fragment {
         RecyclerView flightList = requireActivity().findViewById(R.id.searchFlightsRecyclerView);
 
         StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
-        Flight[] flight = { state.getFlight() };
-        FlightInfoRecyclerViewAdapter adapter = new FlightInfoRecyclerViewAdapter(getContext(), flight);
-        flightList.setLayoutManager(new LinearLayoutManager(getContext()));
-        flightList.setAdapter(adapter);
+        Flight flight = state.getFlight();
+
+        TextView airline = view.findViewById(R.id.flightInfoAirline);
+        TextView flightNumber = view.findViewById(R.id.flightInfoFlightNumVal);
+        LinearLayout terminalGroup = view.findViewById(R.id.flightInfoTerminal);
+        TextView terminal = view.findViewById(R.id.flightInfoTerminalVal);
+        LinearLayout gateGroup = view.findViewById(R.id.flightInfoGate);
+        TextView gate = view.findViewById(R.id.flightInfoGateVal);
+        TextView destination = view.findViewById(R.id.flightInfoDestinationVal);
+        TextView departureTime = view.findViewById(R.id.flightInfoDepartureTimeVal);
+        TextView status = view.findViewById(R.id.flightInfoStatusVal);
+
+        airline.setText(flight.getAirline());
+        flightNumber.setText(flight.getNumber());
+        destination.setText(flight.getDestination());
+
+        if (!flight.getGate().equals("")) {
+            gateGroup.setVisibility(View.VISIBLE);
+            gate.setText(flight.getGate());
+        } else {
+            gate.setVisibility(View.GONE);
+        }
+
+        if (!flight.getTerminal().equals("")) {
+            terminalGroup.setVisibility(View.VISIBLE);
+            terminal.setText(flight.getGate());
+        } else {
+            terminalGroup.setVisibility(View.GONE);
+        }
+
+        terminal.setText(flight.getTerminal());
+        departureTime.setText(flight.getTimeAsString());
+        status.setText(flight.getStatus());
     }
 }

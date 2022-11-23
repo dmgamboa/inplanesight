@@ -117,10 +117,17 @@
         <action
             android:id="@+id/action_startHuntFragment_to_findFragment2"
             app:destination="@id/findFragment2" />
+        <action
+            android:id="@+id/action_startHuntFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/findFragment2"
         android:name="com.inplanesight.ui.find.FindFragment"
         android:label="fragment_find"
-        tools:layout="@layout/fragment_find" />
+        tools:layout="@layout/fragment_find" >
+        <action
+            android:id="@+id/action_findFragment2_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+    </fragment>
 </navigation>

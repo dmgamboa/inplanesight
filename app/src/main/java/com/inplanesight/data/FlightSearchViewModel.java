@@ -48,7 +48,7 @@ public class FlightSearchViewModel extends ViewModel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm");
         LocalDateTime currentTime = LocalDateTime.now();
         String fromTime = formatter.format(currentTime);
-        String toTime = formatter.format(currentTime.plusHours(6));
+        String toTime = formatter.format(currentTime.plusHours(1));
 
         String url = "https://" + BuildConfig.AERODATABOX_API_HOST + "/flights/airports/icao/"
                 + airport.getCode() + "/" + fromTime + "/" + toTime
@@ -83,7 +83,7 @@ public class FlightSearchViewModel extends ViewModel {
                         String number = flight.getString("number");
                         String status = flight.getString("status");
                         String code = arrivalAirport.has("iata") ? " (" +arrivalAirport.getString("iata") + ")" : "";
-                        String destination = arrivalAirport.getString("name") + " (" + arrivalAirport.getString("iata") + ")";
+                        String destination = arrivalAirport.getString("name") + code;
                         String terminal = departureInformation.has("terminal") ? departureInformation.getString("terminal") : "";
                         String gate = departureInformation.has("gate") ? departureInformation.getString("gate") : "";
 

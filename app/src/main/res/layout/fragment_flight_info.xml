@@ -14,12 +14,8 @@
         android:gravity="center_horizontal"
         android:text="@string/flight_info_header"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/flightInfoRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingVertical="10dp" />
+    <include layout="@layout/view_flight_info"/>
 </LinearLayout>

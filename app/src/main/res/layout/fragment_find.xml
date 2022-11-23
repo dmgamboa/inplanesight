@@ -13,7 +13,39 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="20dp">
 
-        <include layout="@layout/view_find_carousel"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/findImgCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/findImgCarousel">
+
+            <Button
+                android:id="@+id/findImgBtn1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/findImgBtn2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/findImgBtn3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <ImageView
@@ -31,8 +63,9 @@
         android:layout_height="match_parent"
         android:paddingVertical="10dp"
         android:paddingHorizontal="20dp">
+
         <Button
-            android:id="@+id/startHuntBtn"
+            android:id="@+id/foundHuntBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/hunt_btn"

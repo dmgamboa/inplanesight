@@ -1,8 +1,15 @@
 package com.inplanesight.models;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
 import org.json.JSONObject;
 
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 
 public class Hunt implements Serializable {
@@ -45,5 +52,19 @@ public class Hunt implements Serializable {
 
     public void setTimestampFound(Date timestampFound) {
         this.timestampFound = timestampFound;
+    }
+
+    public Bitmap getImgAsBitmap() {
+            try {
+                URL url = new URL(imageUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                return BitmapFactory.decodeStream(input);
+            } catch (Exception e) {
+                Log.e("In Plane Sight",e.getMessage());
+                return null;
+            }
     }
 }

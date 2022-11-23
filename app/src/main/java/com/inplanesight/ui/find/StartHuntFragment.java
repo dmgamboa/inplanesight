@@ -46,7 +46,7 @@ public class StartHuntFragment extends Fragment {
 
         startHuntBtn.setOnClickListener(v -> {
             StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
-//            String airport = state.getAirport().getCode();
+            String airport = state.getAirport().getCode();
 //            game.startHunt(); /** TODO: Pass airportCode from here ? */
 
             Navigation.findNavController(requireView()).navigate(R.id.action_startHuntFragment_to_findFragment2);

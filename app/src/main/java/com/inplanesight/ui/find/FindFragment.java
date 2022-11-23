@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.inplanesight.R;
 import com.inplanesight.data.GameViewModel;
@@ -50,40 +51,13 @@ public class FindFragment extends Fragment {
         new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/1/12/Perry_in_the_backyard.jpg", new Coordinates(), Date.from(Instant.now())),
         new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/6/66/Profile_-_Perry_the_Platypus.PNG", new Coordinates(), null)};
 
-//        try {
-//            ViewPager2 carousel = getView().findViewById(R.id.findImgCarousel);
-//            FindRecyclerViewAdapter adapter = new FindRecyclerViewAdapter(getContext(), testHunts);
-//            carousel.setAdapter(adapter);
-//        } catch (Exception e) {
-//            Log.d("In Plane Sight", e.getMessage());
-//        }
-//
-//        Button[] carouselIndicators = { requireView().findViewById(R.id.findImgBtn1), requireView().findViewById(R.id.findImgBtn2), requireView().findViewById(R.id.findImgBtn3)};
-//        Button foundBtn = requireView().findViewById(R.id.foundHuntBtn);
+        Button foundBtn = requireView().findViewById(R.id.foundHuntBtn);
 
-//        carousel.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//                for (int i = 0; i < carouselIndicators.length; i++) {
-//                    if (i != position) {
-//                        carouselIndicators[i].setBackgroundColor(getResources().getColor(R.color.grey, null));
-//                    } else {
-//                        carouselIndicators[i].setBackgroundColor(getResources().getColor(R.color.aqua, null));
-//                    }
-//                }
-//
-//                /** TODO: Change testHunts from ViewModel */
-//                if (testHunts[position].getTimestampFound() != null) {
-//                    foundBtn.setEnabled(false);
-//                } else {
-//                    foundBtn.setEnabled(true);
-//                }
-//            }
-//        });
+//        ImageView findImg = requireView().findViewById(R.id.findImg);
+//        findImg.setImageBitmap(testHunts[0].getImgAsBitmap());
 
-//        foundBtn.setOnClickListener(v -> {
-//            /** TODO: Call appropriate method in HuntViewModel that checks the user location */
-//        });
+        foundBtn.setOnClickListener(v -> {
+            /** TODO: Call appropriate method in HuntViewModel that checks the user location */
+        });
     }
 }

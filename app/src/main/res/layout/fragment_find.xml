@@ -13,10 +13,11 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="20dp">
 
-        <androidx.viewpager2.widget.ViewPager2
+        <include
             android:id="@+id/findImgCarousel"
             android:layout_width="match_parent"
-            android:layout_height="600dp"/>
+            android:layout_height="600dp"
+            layout="@layout/view_find_carousel"/>
 
         <LinearLayout
             android:layout_width="match_parent"

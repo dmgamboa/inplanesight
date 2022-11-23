@@ -20,6 +20,7 @@
     <string name="search_flights_airport"><b>Airport</b></string>
     <string name="search_flights_select_btn">Select Flight</string>
     <string name="search_flights_back_btn">Go back</string>
+    <string name="search_flights_popup_heading">Is this your flight?</string>
 
     <!-- Flight Info -->
     <string name="flight_info_flight_number">Flight Number</string>

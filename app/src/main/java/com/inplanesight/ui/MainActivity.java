@@ -14,9 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
-import com.inplanesight.data.FlightSearchViewModel;
 import com.inplanesight.data.LocationViewModel;
-import com.inplanesight.data.StateViewModel;
+import com.inplanesight.data.LocationViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
     LocationViewModel locationService;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupNav();
 
-        locationService = new LocationViewModel(this);
+        locationService = new ViewModelProvider(this, new LocationViewModelFactory(this)).get(LocationViewModel.class);
         permissionsLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
             if (!isGranted) {
                 Toast.makeText(this, "Why you gotta be like this :(", Toast.LENGTH_SHORT);

@@ -84,11 +84,11 @@ public class FindFragment02 extends Fragment {
 
         Button startBtn = getActivity().findViewById(R.id.start_hunt);
         //get Nearby Places test call.
-        try {
-            googlePlaceAPI.getNearbyPlaces("49.1902", "-123.1837", this);
-        } catch (IOException e) {
-            Log.d(TAG, "onViewCreated: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            googlePlaceAPI.getNearbyPlaces("49.1902", "-123.1837", this);
+//        } catch (IOException e) {
+//            Log.d(TAG, "onViewCreated: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 }

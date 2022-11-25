@@ -1,17 +1,19 @@
 package com.inplanesight.ui.find;
 
+import android.graphics.Bitmap;
+
 public class ViewPagerItem {
-    String imageUrl;
+    Bitmap imageMap;
 
-    public ViewPagerItem(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public ViewPagerItem(Bitmap imageMap) {
+        this.imageMap = imageMap;
     }
 
-    public String getImage() {
-        return imageUrl;
+    public Bitmap getImage() {
+        return imageMap;
     }
 
-    public void setImage(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(Bitmap imageMap) {
+        this.imageMap = imageMap;
     }
 }

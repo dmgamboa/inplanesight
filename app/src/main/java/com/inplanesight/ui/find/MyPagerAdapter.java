@@ -31,7 +31,7 @@ public class MyPagerAdapter extends RecyclerView.Adapter<MyPagerAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewPagerItem viewPagerItem = viewPagerItemArrayList.get(position);
-        holder.imageView.setImageURI(Uri.parse(viewPagerItem.imageUrl));
+        holder.imageView.setImageBitmap(viewPagerItem.imageMap);
     }
 
     @Override

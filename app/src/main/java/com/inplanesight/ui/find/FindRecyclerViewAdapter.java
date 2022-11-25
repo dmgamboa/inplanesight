@@ -33,9 +33,6 @@ public class FindRecyclerViewAdapter extends RecyclerView.Adapter<FindRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull FindViewHolder holder, int position) {
         Hunt hunt = hunts[position];
-        if (hunt.getImgAsBitmap() != null) {
-            holder.imageContainer.setImageBitmap(hunt.getImgAsBitmap());
-        }
     }
 
     @Override

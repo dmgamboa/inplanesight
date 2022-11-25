@@ -1,18 +1,20 @@
 package com.inplanesight.ui.find;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.inplanesight.BuildConfig;
 import com.inplanesight.R;
@@ -23,10 +25,11 @@ import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.models.Airport;
 import com.inplanesight.models.Coordinates;
 import com.inplanesight.models.Hunt;
-import com.inplanesight.ui.check_in.SearchFragmentArgs;
+
 
 import org.checkerframework.checker.units.qual.A;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -50,7 +53,8 @@ public class HuntFragment extends Fragment {
     GameViewModel gameViewModel;
     LocationViewModel locationService;
     Airport selectedAirport;
-    ArrayList<String> imageUrls = new ArrayList<>();
+    ArrayList<String> imageRefs;
+    FirebaseAPI firebaseAPI;
 
     ViewPager2 viewPager2;
     ArrayList<ViewPagerItem> viewPagerItems;
@@ -97,52 +101,61 @@ public class HuntFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        gameViewModel = new GameViewModel(selectedAirport.getCode());
+
         locationService = new LocationViewModel(getActivity());
         googlePlaceAPI = new GooglePlacesAPI();
-
-        // Place ID for YVR Airport
-        //TODO : get this as an arg from a bundle passed from search fragment
-        final String placeId = "ChIJm6MnhjQLhlQRhIA0hqzMaLo";
-
-        ImageView places = (ImageView) view.findViewById(R.id.hunt_photo);
+        imageRefs = new ArrayList<>();
+        firebaseAPI = new FirebaseAPI();
+        viewPager2 = getView().findViewById(R.id.vPager);
 
         // Initialize the Places SDK
-        googlePlaceAPI.initialize(places.getContext(), BuildConfig.MAPS_API_KEY);
+        googlePlaceAPI.initialize(this.getContext(), BuildConfig.MAPS_API_KEY);
 
-        //get photo bitmap:
-//        try {
-//            googlePlaceAPI.getPhotoBitmapFromPlace(places.getContext(), placeId, this);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        gameViewModel.checkDatabase();
-
-        viewPager2 = getView().findViewById(R.id.vPager);
-        for (Hunt hunt: gameViewModel.getGame().getScavengerHunt()) {
-            imageUrls.add(hunt.getImageUrl());
+        gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+        try {
+            gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         viewPagerItems = new ArrayList<>();
+        gameViewModel.getGame().observe(getViewLifecycleOwner(), game -> {
+            if (game != null) {
+                if (viewPagerItems.isEmpty()) {
+                    for (Hunt hunt: game.getScavengerHunt()) {
+                        imageRefs.add(hunt.getImageRef());
+                    }
 
-        for(int i=0; i<imageUrls.size(); i++) {
-            ViewPagerItem viewPagerItem = new ViewPagerItem(imageUrls.get(i));
-            viewPagerItems.add(viewPagerItem);
-        }
-
-        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
-        viewPager2.setAdapter(myPagerAdapter);
+                    for(int i=0; i<imageRefs.size(); i++) {
+                        int finalI = i;
+                        FirebaseAPI.downloadPhotoFromStorage(imageRefs.get(i), bytes -> {
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                            ViewPagerItem viewPagerItem = new ViewPagerItem(bitmap);
+                            viewPagerItems.add(viewPagerItem);
+                            if (finalI == imageRefs.size() - 1) {
+                                MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
+                                viewPager2.setAdapter(myPagerAdapter);
+                            }
+                        });
+                    }
+                }
+            }
+        });
 
         Button foundBtn = getActivity().findViewById(R.id.btnFoundLocation);
         foundBtn.setOnClickListener((e) -> {
             locationService.storeLocation();
-            Coordinates currLocation = locationService.getCoordinates();
-            gameViewModel.foundLocation(currLocation, viewPager2.getCurrentItem());
+            locationService.getCoordinates().observe(getViewLifecycleOwner(), loc -> {
+                boolean res = gameViewModel.foundLocation(loc, viewPager2.getCurrentItem());
+                String message = res ? "Found location +1000pts!" : "Wrong place :( -100pts";
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            });
         });
 
         Button endBtn = getActivity().findViewById(R.id.btnEndHunt);
         endBtn.setOnClickListener((e) -> {
-            gameViewModel.endHunt();
+            int score = gameViewModel.endHunt();
+            Toast.makeText(getContext(), score + "pts!", Toast.LENGTH_SHORT).show();
         });
     }
 }

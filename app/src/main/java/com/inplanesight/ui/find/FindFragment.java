@@ -46,10 +46,10 @@ public class FindFragment extends Fragment {
 
         /** TODO: Event Handler for when hunt[] changes (i.e., timeStampFound changes) */
         /** TODO: Retrieve from GameViewModel */
-        Hunt[] testHunts = {
-        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/5/5d/Doofenshmirtz_Portrait.jpg", new Coordinates(), null),
-        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/1/12/Perry_in_the_backyard.jpg", new Coordinates(), Date.from(Instant.now())),
-        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/6/66/Profile_-_Perry_the_Platypus.PNG", new Coordinates(), null)};
+//        Hunt[] testHunts = {
+//        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/5/5d/Doofenshmirtz_Portrait.jpg", new Coordinates(), null),
+//        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/1/12/Perry_in_the_backyard.jpg", new Coordinates(), Date.from(Instant.now())),
+//        new Hunt("test1", "test1", "https://static.wikia.nocookie.net/phineasandferb/images/6/66/Profile_-_Perry_the_Platypus.PNG", new Coordinates(), null)};
 
         Button foundBtn = requireView().findViewById(R.id.foundHuntBtn);
 

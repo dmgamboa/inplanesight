@@ -82,7 +82,9 @@ public class FlightSearchViewModel extends ViewModel {
                         String airline = flight.getJSONObject("airline").getString("name");
                         String number = flight.getString("number");
                         String status = flight.getString("status");
+
                         String code = arrivalAirport.has("iata") ? " (" +arrivalAirport.getString("iata") + ")" : "";
+
                         String destination = arrivalAirport.getString("name") + code;
                         String terminal = departureInformation.has("terminal") ? departureInformation.getString("terminal") : "";
                         String gate = departureInformation.has("gate") ? departureInformation.getString("gate") : "";

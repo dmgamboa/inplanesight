@@ -16,15 +16,16 @@ public class Hunt implements Serializable {
     String airportCode;
     String name;
     String id;
-    String imageUrl;
+    String imageRef;
     Coordinates coordinates;
     Date timestampFound;
 
-    public Hunt(String name, String id, String imageUrl, Coordinates coordinates, Date timestampFound) {
+    public Hunt(String name, String id, String imageRef, Coordinates coordinates, String airportCode) {
         this.name = name;
         this.id = id;
-        this.imageUrl = imageUrl;
+        this.imageRef = imageRef;
         this.coordinates = coordinates;
+        this.airportCode = airportCode;
         this.timestampFound = null;
     }
 
@@ -32,15 +33,15 @@ public class Hunt implements Serializable {
         try {
             this.name = hunt.getString("name");
             this.id = hunt.getString("id");
-            this.imageUrl = hunt.getString("places_id");
-            this.coordinates = new Coordinates(hunt.getJSONObject("location"));
+            this.imageRef = hunt.getString("imageRef");
+            this.coordinates = new Coordinates(hunt.getJSONObject("coordinates"));
             this.timestampFound = null;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public String getImageUrl() { return imageUrl; }
+    public String getImageRef() { return imageRef; }
 
     public Coordinates getCoordinates() {
         return coordinates;
@@ -54,17 +55,27 @@ public class Hunt implements Serializable {
         this.timestampFound = timestampFound;
     }
 
-    public Bitmap getImgAsBitmap() {
-            try {
-                URL url = new URL(imageUrl);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                return BitmapFactory.decodeStream(input);
-            } catch (Exception e) {
-                Log.e("In Plane Sight",e.getMessage());
-                return null;
-            }
+    public String getAirportCode() {
+        return airportCode;
+    }
+
+    public void setAirportCode(String airportCode) {
+        this.airportCode = airportCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

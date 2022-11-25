@@ -13,13 +13,15 @@ import android.provider.Settings;
 import android.util.Log;
 
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.inplanesight.models.Coordinates;
 
 
-public class LocationViewModel extends Service {
+public class LocationViewModel extends ViewModel {
     final public static String[] REQUIRED_PERMISSIONS = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION
@@ -27,7 +29,7 @@ public class LocationViewModel extends Service {
 
     FusedLocationProviderClient locationProvider;
     LocationManager locationManager;
-    Coordinates location;
+    MutableLiveData<Coordinates> location = new MutableLiveData<>();
     Context context;
 
     public LocationViewModel(Context context) {
@@ -36,19 +38,13 @@ public class LocationViewModel extends Service {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
     @SuppressLint("MissingPermission")
     public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
             locationProvider.getLastLocation().addOnCompleteListener(task -> {
                 try{
                     Location res = task.getResult();
-                    location = new Coordinates(res.getLatitude(), res.getLongitude());
+                    location.postValue(new Coordinates(res.getLatitude(), res.getLongitude()));
                 } catch (Exception e) {
                     Log.d("storeLocation", e.getMessage());
                 }
@@ -56,7 +52,7 @@ public class LocationViewModel extends Service {
         }
     }
 
-    public Coordinates getCoordinates() {
+    public MutableLiveData<Coordinates> getCoordinates() {
         return location;
     }
 
@@ -67,7 +63,7 @@ public class LocationViewModel extends Service {
 
     public void requestEnableLocation() {
         if (!isLocationEnabled()) {
-            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+            context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }

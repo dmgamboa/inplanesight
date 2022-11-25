@@ -47,7 +47,7 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        locationService = new LocationViewModel(getActivity());
+        locationService = new ViewModelProvider(requireActivity()).get(LocationViewModel.class);
         airportService = new AirportViewModel(getActivity());
 
         BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_nav);
@@ -79,14 +79,17 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     public void suggestAirport(View view) {
-        locationService.storeLocation();
-        Coordinates userLocation = locationService.getCoordinates();
-        int closestAirportIndex = airportService.getClosestAirportIndex(userLocation);
-        Spinner airportSpinner = getActivity().findViewById(R.id.checkInAirportInput);
-        airportSpinner.setSelection(closestAirportIndex);
-        selectedAirport = airportService.getAirport(closestAirportIndex);
+        locationService.getCoordinates().observe(getViewLifecycleOwner(), coords -> {
+            if (coords != null) {
+                int closestAirportIndex = airportService.getClosestAirportIndex(coords);
+                Spinner airportSpinner = requireActivity().findViewById(R.id.checkInAirportInput);
+                airportSpinner.setSelection(closestAirportIndex);
+                selectedAirport = airportService.getAirport(closestAirportIndex);
 
-        Toast.makeText(getActivity(), R.string.check_in_suggest_airport_toast, Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireActivity(), R.string.check_in_suggest_airport_toast, Toast.LENGTH_SHORT).show();
+                }
+            });
+        locationService.storeLocation();
     }
 
     @Override

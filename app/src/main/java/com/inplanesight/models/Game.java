@@ -13,6 +13,7 @@ public class Game implements Serializable {
 
     public Game(String airportCode) {
         this.airportCode = airportCode;
+        scavengerHunt = new ArrayList<>();
     }
 
     public void addHuntObject(Hunt item) {
@@ -23,8 +24,16 @@ public class Game implements Serializable {
         return scavengerHunt;
     }
 
+    public Hunt getHuntAt(int index) { return scavengerHunt.get(index); }
+
+    public void addHunt(Hunt h) { scavengerHunt.add(h); }
+
     public void setScore(int score) {
         this.score += score;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public Date getStartingTimestamp() {

@@ -102,7 +102,6 @@ public class HuntFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        locationService = new LocationViewModel(getActivity());
         googlePlaceAPI = new GooglePlacesAPI();
         imageRefs = new ArrayList<>();
         firebaseAPI = new FirebaseAPI();

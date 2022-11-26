@@ -19,6 +19,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inplanesight.R;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.StateViewModel;
+import com.inplanesight.models.Airport;
+
+import java.io.IOException;
 
 public class StartHuntFragment extends Fragment {
 
@@ -38,16 +41,16 @@ public class StartHuntFragment extends Fragment {
         bottomNav.setVisibility(View.VISIBLE);
 
         Button startHuntBtn = requireActivity().findViewById(R.id.startHuntBtn);
-
-//        GameViewModel game = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
-//        if (game.getGame() != null) {
-//            Navigation.findNavController(requireView()).navigate(R.id.action_startHuntFragment_to_findFragment2);
-//        }
-
         startHuntBtn.setOnClickListener(v -> {
+            GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
             StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
-            String airport = state.getAirport().getCode();
-//            game.startHunt(); /** TODO: Pass airportCode from here ? */
+            Airport selectedAirport = state.getAirport();
+
+            try {
+                gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
+            } catch (IOException e) {
+                Log.d("In Plane Sight", e.getMessage());
+            }
 
             Navigation.findNavController(requireView()).navigate(R.id.action_startHuntFragment_to_findFragment2);
         });

@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.inplanesight.ui.common.SignInFragment"
+        android:name="com.inplanesight.ui.account.SignInFragment"
         android:label="SignInFragment" >
         <action
             android:id="@+id/action_signInFragment_to_accountFragment"

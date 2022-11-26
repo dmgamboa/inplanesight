@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -19,18 +17,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.inplanesight.R;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.models.Users;
-import com.inplanesight.ui.common.SignInFragment;
-
-import java.util.concurrent.Executor;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,16 +87,17 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize Firestore
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        if (mAuth.getmAuth().getCurrentUser() == null) {
+            Navigation.findNavController(getView()).navigate(R.id.action_accountFragment_to_signInFragment);
+        } else {
+            // Initialize Firestore
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        //Get user data
-        db.collection("users")
-                .whereEqualTo("id", mAuth.getmAuth().getCurrentUser().getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            //Get user data
+            db.collection("users")
+                    .whereEqualTo("id", mAuth.getmAuth().getCurrentUser().getUid())
+                    .get()
+                    .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Users users = document.toObject(Users.class);
@@ -125,8 +118,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-                    }
-                });
+                    });
+        }
 
         //Create listener for sign out and verifying email
         Button signOutBtn = getView().findViewById(R.id.signoutBtn);
@@ -143,22 +136,19 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         // Send verification email
         final FirebaseUser user = mAuth.getmAuth().getCurrentUser();
         user.sendEmailVerification()
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // Re-enable button
-                        getView().findViewById(R.id.verify_email_button).setEnabled(true);
+                .addOnCompleteListener(task -> {
+                    // Re-enable button
+                    getView().findViewById(R.id.verify_email_button).setEnabled(true);
 
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getActivity(),
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(getActivity(),
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getActivity(),
+                                "Verification email sent to " + user.getEmail(),
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e(TAG, "sendEmailVerification", task.getException());
+                        Toast.makeText(getActivity(),
+                                "Failed to send verification email.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }

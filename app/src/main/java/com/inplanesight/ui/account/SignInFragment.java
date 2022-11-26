@@ -1,17 +1,12 @@
-package com.inplanesight.ui.common;
-
-import static android.content.ContentValues.TAG;
+package com.inplanesight.ui.account;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,9 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.inplanesight.R;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.models.Users;
-import com.inplanesight.ui.account.AccountFragment;
-
-import java.util.concurrent.Executor;
 
 
 /**
@@ -103,7 +95,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         // Views
         mStatusTextView = getView().findViewById(R.id.status);
-        mDetailTextView = getView().findViewById(R.id.detail);
         mEmailField = getView().findViewById(R.id.field_email);
         mPasswordField = getView().findViewById(R.id.field_password);
         mNicknameField = getView().findViewById(R.id.field_nickname);
@@ -118,7 +109,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             Navigation.findNavController(getView()).navigate(R.id.action_signInFragment_to_accountFragment);
         } else {
             mStatusTextView.setText("Signed out");
-            mDetailTextView.setText(null);
 
             getView().findViewById(R.id.email_create_account_button).setVisibility(View.VISIBLE);
             getView().findViewById(R.id.email_sign_in_button).setVisibility(View.VISIBLE);
@@ -136,7 +126,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     }
 
     public void addUser(Users users) {
-
         // Initialize Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

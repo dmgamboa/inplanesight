@@ -20,6 +20,7 @@ import com.inplanesight.R;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
+import com.inplanesight.models.Coordinates;
 
 import java.io.IOException;
 
@@ -44,7 +45,7 @@ public class StartHuntFragment extends Fragment {
             }
         });
 
-        BottomNavigationView bottomNav = requireActivity().findViewById(R.id.action_startHuntFragment_to_findFragment2);
+        BottomNavigationView bottomNav = requireActivity().findViewById(R.id.bottom_nav);
         bottomNav.setVisibility(View.VISIBLE);
 
         Button startHuntBtn = requireActivity().findViewById(R.id.startHuntBtn);
@@ -53,12 +54,12 @@ public class StartHuntFragment extends Fragment {
             Airport selectedAirport = state.getAirport();
 
             try {
-                gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
+                gameViewModel.startHunt("CYVR", new Coordinates(49.193901062,-123.183998108));
+
+//                gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
             } catch (IOException e) {
                 Log.d("In Plane Sight", e.getMessage());
             }
-
-            Navigation.findNavController(requireView()).navigate(R.id.action_startHuntFragment_to_findFragment2);
         });
     }
 }

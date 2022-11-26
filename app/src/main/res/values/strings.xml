@@ -34,7 +34,8 @@
     <string name="start_hunt_header">You\'re all set!</string>
     <string name="start_hunt_txt">Keep an eye out for these locations while you walk around the airport.</string>
     <string name="start_hunt_btn_txt">Let\'s go</string>
-    <string name="hunt_btn">Found It!</string>
+    <string name="hunt_btn_enabled">Found It!</string>
+    <string name="hunt_btn_disabled">Already found!</string>
 
     <!-- Flight Info -->
     <string name="flight_info_header">Your upcoming flight</string>

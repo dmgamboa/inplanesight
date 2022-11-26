@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="120dp"
+            android:layout_marginBottom="100dp"
             android:gravity="center_horizontal"
             android:layout_above="@id/foundHuntBtn">
 
@@ -79,9 +79,11 @@
             android:id="@+id/foundHuntBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hunt_btn"
+            android:text="@string/hunt_btn_enabled"
             android:backgroundTint="@color/orange"
             android:layout_alignParentBottom="true"
+            android:fontFamily="@font/sono_bold"
+            android:textColor="@color/white"
             android:textSize="25sp" />
     </RelativeLayout>
 </RelativeLayout>

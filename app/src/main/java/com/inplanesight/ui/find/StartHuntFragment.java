@@ -37,12 +37,18 @@ public class StartHuntFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        BottomNavigationView bottomNav = requireActivity().findViewById(R.id.bottom_nav);
+        GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+        gameViewModel.getGame().observe(getViewLifecycleOwner(), game -> {
+            if (game != null) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_startHuntFragment_to_findFragment2);
+            }
+        });
+
+        BottomNavigationView bottomNav = requireActivity().findViewById(R.id.action_startHuntFragment_to_findFragment2);
         bottomNav.setVisibility(View.VISIBLE);
 
         Button startHuntBtn = requireActivity().findViewById(R.id.startHuntBtn);
         startHuntBtn.setOnClickListener(v -> {
-            GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
             StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
             Airport selectedAirport = state.getAirport();
 

@@ -74,16 +74,28 @@ public class GameViewModel extends ViewModel {
     }
 
     // Check Coordinates object with LocationService and update score
-    public boolean foundLocation (Coordinates userLoc, int index) {
-        double threshold = 1000000;
+    public int foundLocation (Coordinates userLoc, int index) {
+        double threshold = 10000000;
         Coordinates placeLoc = game.getValue().getHuntAt(index).getCoordinates();
         Game updatedGame = game.getValue();
-        boolean foundLocation = false;
+        int foundLocation = 0;
+        boolean foundAll = true;
+        for (Hunt item: updatedGame.getScavengerHunt()) {
+            if (item.getTimestampFound() == null) {
+                foundAll = false;
+            }
+        }
+        if (foundAll) {
+            foundLocation = endHunt();
+            return foundLocation;
+        }
         if (Math.abs(Coordinates.getDistance(userLoc, placeLoc)) <= threshold) {
             if (updatedGame.getScavengerHunt().get(index).getTimestampFound() == null) {
-                foundLocation = true;
+                foundLocation = 1;
                 updatedGame.getScavengerHunt().get(index).setTimestampFound(new Date(0));
                 updatedGame.setScore(1000);
+            } else {
+                foundLocation = 2;
             }
         } else {
             updatedGame.setScore(-100);

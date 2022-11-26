@@ -141,15 +141,15 @@ public class HuntFragment extends Fragment {
             }
         });
 
-        Button foundBtn = getActivity().findViewById(R.id.btnFoundLocation);
-        foundBtn.setOnClickListener((e) -> {
-            locationService.storeLocation();
-            locationService.getCoordinates().observe(getViewLifecycleOwner(), loc -> {
-                boolean res = gameViewModel.foundLocation(loc, viewPager2.getCurrentItem());
-                String message = res ? "Found location +1000pts!" : "Wrong place :( -100pts";
-                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-            });
-        });
+//        Button foundBtn = getActivity().findViewById(R.id.btnFoundLocation);
+//        foundBtn.setOnClickListener((e) -> {
+//            locationService.storeLocation();
+//            locationService.getCoordinates().observe(getViewLifecycleOwner(), loc -> {
+//                boolean res = gameViewModel.foundLocation(loc, viewPager2.getCurrentItem());
+//                String message = res ? "Found location +1000pts!" : "Wrong place :( -100pts";
+//                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//            });
+//        });
 
         Button endBtn = getActivity().findViewById(R.id.btnEndHunt);
         endBtn.setOnClickListener((e) -> {

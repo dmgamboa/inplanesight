@@ -10,29 +10,21 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.inplanesight.R;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.data.GameViewModel;
-import com.inplanesight.data.StateViewModel;
-import com.inplanesight.models.Airport;
-import com.inplanesight.models.Coordinates;
+import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.models.Hunt;
 
-import java.io.IOException;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class FindFragment extends Fragment {
-    int huntIndex = 0;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +69,27 @@ public class FindFragment extends Fragment {
 
         Button foundBtn = requireView().findViewById(R.id.foundHuntBtn);
 
+        LocationViewModel locationService = new ViewModelProvider(requireActivity()).get(LocationViewModel.class);
         foundBtn.setOnClickListener(v -> {
-            /** TODO: Call appropriate method in HuntViewModel that checks the user location */
+            locationService.storeLocation();
+            locationService.getCoordinates().observe(getViewLifecycleOwner(), loc -> {
+                int res = gameViewModel.foundLocation(loc, viewPager.getCurrentItem());
+                String message;
+                switch (res) {
+                    case 0:
+                        message = "Wrong place :( -100pts";
+                        break;
+                    case 1:
+                        message = "Found location +1000pts!";
+                        break;
+                    case 2:
+                        message = "Location found!";
+                        break;
+                    default:
+                        message = "You scored " + res + "pts total!";
+                }
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            });
         });
     }
 }

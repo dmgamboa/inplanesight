@@ -11,6 +11,12 @@ public class Leaderboard implements Serializable {
 
     public Leaderboard() {}
 
+    public Leaderboard(String username, int score) {
+        this.user = username;
+        this.score = score;
+        this.code = code;
+    }
+
     public Leaderboard(String username, int score, String code) {
         this.user = username;
         this.score = score;

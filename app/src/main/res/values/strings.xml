@@ -39,6 +39,14 @@
     <!-- Flight Info -->
     <string name="flight_info_header">Your upcoming flight</string>
 
+    <!-- Leaderboards -->
+    <string name="leaderboards_header">Leaderboards</string>
+    <string name="leaderboards_rank">Rank</string>
+    <string name="leaderboards_name">Name</string>
+    <string name="leaderboards_score">Score</string>
+    <string name="leaderboards_date">Date</string>
+    <string name="leaderboards_airport">ABCD</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overviewBtnText">Get Started</string>
     <string name="hunt_page_title">Scavenger Hunt</string>
@@ -55,8 +63,6 @@
     <string name="avatar_img">Avatar image</string>
     <string name="placeholder">Placeholder</string>
     <string name="Places_Test">Places Test</string>
-    <string name="test">test</string>
-    <string name="use_my_location">Suggest Based on Location</string>
     <string name="account">Account</string>
     <string name="nickname">Nickname:</string>
     <string name="email">Email:</string>

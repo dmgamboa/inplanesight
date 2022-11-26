@@ -8,4 +8,6 @@
     <color name="aqua">#FF008E97</color>
     <color name="orange">#F58220</color>
     <color name="grey">#696969</color>
+    <color name="dark_grey">#2f2f2f</color>
+    <color name="darker_grey">#181818</color>
 </resources>

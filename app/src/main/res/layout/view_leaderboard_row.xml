@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="30dp"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="5dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:id="@+id/leaderboardsRank"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="@string/leaderboards_rank"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code_bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:id="@+id/leaderboardsName"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:text="@string/leaderboards_name"
+        android:fontFamily="@font/source_code_bold"
+        android:textSize="18sp"
+        android:textColor="@color/orange"/>
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:id="@+id/leaderboardsScore"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="@string/leaderboards_score"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code_bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+</TableRow>

@@ -1,105 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.find.FindFragment02">
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="10dp"
+    tools:context=".ui.find.FindFragment02"
+    android:background="@color/darker_grey">
+    <TableRow
+        android:layout_height="60dp"
+        android:background="@color/dark_grey"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/medal"
+            android:backgroundTint="@color/orange"/>
 
-    <LinearLayout
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/leaderboards_header"
+            android:textAllCaps="true"
+            android:fontFamily="@font/sono_bold"
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/leaderboardsAirport"
+            android:text="@string/leaderboards_airport"
+            android:textAllCaps="true"
+            android:fontFamily="@font/sono_bold"
+            android:textSize="24sp"
+            android:textColor="@color/orange"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_height="30dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="5dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/leaderboards_rank"
+            android:textAllCaps="true"
+            android:fontFamily="@font/source_code"
+            android:textSize="18sp"
+            android:textColor="@color/grey"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:text="@string/leaderboards_name"
+            android:textAllCaps="true"
+            android:fontFamily="@font/source_code"
+            android:textSize="18sp"
+            android:textColor="@color/grey"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="@string/leaderboards_score"
+            android:textAllCaps="true"
+            android:fontFamily="@font/source_code"
+            android:textSize="18sp"
+            android:textColor="@color/grey"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/leaderBoardsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:textSize="40sp"
-            android:textColor="@color/teal_700"
-            android:paddingLeft="10dp"
-            android:text="@string/leaderboards" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/teal_700"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:paddingLeft="20dp"
-            android:text="@string/hunt_name" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="444dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="35dp"
-            android:background="@drawable/leaderboard_border"
-            android:padding="2dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="29dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:contentDescription="Avatar image"
-                tools:src="@tools:sample/avatars"
-                android:background="@drawable/leaderboard_border"/>
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="2"
-                android:padding="5dp"
-                android:text="@string/username"
-                android:background="@drawable/leaderboard_border"/>
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/score"
-                android:background="@drawable/leaderboard_border"/>
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="2"
-                android:padding="5dp"
-                android:text="@string/time"
-                android:background="@drawable/leaderboard_border"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4sp"
-            android:text="@string/hunt_try_text"
-            android:layout_gravity="center"
-            android:textSize="14sp"
-            android:textColor="@color/teal_700"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/orange"
-            android:text="@string/start_hunt" />
-    </LinearLayout>
-</LinearLayout>
+        android:paddingVertical="10dp" />
+</TableLayout>

@@ -1,37 +1,21 @@
 package com.inplanesight.api;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.inplanesight.data.GameViewModel;
-import com.inplanesight.ui.find.HuntFragment;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class FirebaseAPI extends Service {
 
@@ -62,26 +46,12 @@ public class FirebaseAPI extends Service {
                 .addOnFailureListener(e -> Log.w("Failure", "Error adding document", e));
     }
 
-    public static void readFromFirebase(String airportCode, String collection, ArrayList<JSONObject> list, GameViewModel.ProcessHunts f) {
+    public static void readFromFirebase(String airportCode, String collection, OnCompleteListener<QuerySnapshot> f) {
         //Query firebase for airport, return empty if nothing found
         db.collection(collection)
                 .whereEqualTo("airportCode", airportCode)
                 .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d("Success", document.getId() + " => " + document.getData());
-                            list.add(new JSONObject(document.getData()));
-                        }
-                    } else {
-                        Log.w("Failure", "Error getting documents.", task.getException());
-                    }
-                    try {
-                        f.f();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
+                .addOnCompleteListener(f);
     }
 
     public static void uploadPhotoBitmapFromPlace(Bitmap bitmap, String imageRef) {

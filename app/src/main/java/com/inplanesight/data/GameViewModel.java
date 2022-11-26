@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.api.GooglePlacesAPI;
 import com.inplanesight.models.Coordinates;
@@ -33,10 +34,6 @@ public class GameViewModel extends ViewModel {
 
     private GooglePlacesAPI places = new GooglePlacesAPI(huntDataList);
 
-    public interface ProcessHunts {
-        public void f() throws IOException;
-    }
-
     public GameViewModel() {}
 
     public GameViewModel(String airportCode, Coordinates coordinates) throws IOException {
@@ -49,21 +46,31 @@ public class GameViewModel extends ViewModel {
         return game;
     }
 
-    public void f() throws IOException {
-        if (huntList.size() < 1) {
-            places.getNearbyPlaces(coordinates.getLatitude().toString(), coordinates.getLongitude().toString(), airportCode, game);
-        } else {
-            for (JSONObject hunt : huntList) {
-                Game updatedGame = game.getValue();
-                updatedGame.addHunt(new Hunt(hunt));
-                game.postValue(updatedGame);
-            }
-        }
-    }
-
     // Query firebase based on location (airport) to check if location has available hunt if not query google places
     public void checkDatabase () throws IOException {
-        FirebaseAPI.readFromFirebase(airportCode, "hunt", huntList, this::f);
+        FirebaseAPI.readFromFirebase(airportCode, "hunt", task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Log.d("Success", document.getId() + " => " + document.getData());
+                    huntList.add(new JSONObject(document.getData()));
+                }
+            } else {
+                Log.w("Failure", "Error getting documents.", task.getException());
+            }
+            try {
+                if (huntList.size() < 1) {
+                    places.getNearbyPlaces(coordinates.getLatitude().toString(), coordinates.getLongitude().toString(), airportCode, game);
+                } else {
+                    for (JSONObject hunt : huntList) {
+                        Game updatedGame = game.getValue();
+                        updatedGame.addHunt(new Hunt(hunt));
+                        game.postValue(updatedGame);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     // Check Coordinates object with LocationService and update score

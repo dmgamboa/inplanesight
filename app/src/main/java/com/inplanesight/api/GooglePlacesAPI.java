@@ -4,10 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Parcel;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.common.api.ApiException;
@@ -20,13 +18,10 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.inplanesight.BuildConfig;
 import com.inplanesight.ui.find.FindFragment02;
 import com.inplanesight.models.Coordinates;
-import com.inplanesight.models.Flight;
 import com.inplanesight.models.Game;
 import com.inplanesight.models.Hunt;
-import com.inplanesight.ui.find.FindFragment;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;

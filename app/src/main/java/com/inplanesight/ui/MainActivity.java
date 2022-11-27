@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNav() {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+        bottomNav.setItemIconTintList(null);
 
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.mainNavHost);

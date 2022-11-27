@@ -37,7 +37,9 @@
                 android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/nav_menu" />
+                app:menu="@menu/nav_menu"
+                android:background="@color/aqua"
+                app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
         </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

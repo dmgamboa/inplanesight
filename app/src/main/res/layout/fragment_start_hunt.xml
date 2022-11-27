@@ -8,28 +8,38 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="20dp">
+    android:background="@drawable/starthuntbg">
 
-    <TextView
-        android:id="@+id/startHuntHeading"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/start_hunt_header"
-        android:fontFamily="@font/sono_bold"
-        android:textAllCaps="true"
-        android:textSize="24sp"
-        android:textColor="@color/marine_blue"
-        android:gravity="center"
-        android:paddingBottom="20dp"/>
+        android:orientation="vertical"
+        android:paddingHorizontal="25dp"
+        android:layout_marginBottom="75dp"
+    >
+        <TextView
+            android:id="@+id/startHuntHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_hunt_header"
+            android:fontFamily="@font/sono_bold"
+            android:textAllCaps="true"
+            android:textSize="32sp"
+            android:textColor="@color/marine_blue"
+            android:gravity="center"
+            android:paddingBottom="20dp"/>
 
-    <TextView
-        android:id="@+id/startHuntTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_hunt_txt"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:paddingBottom="50dp"/>
+        <TextView
+            android:id="@+id/startHuntTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_hunt_txt"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:paddingBottom="50dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

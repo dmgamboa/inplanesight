@@ -1,101 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.find.FindFragment02"
-    android:clipToPadding="false">
-
-    <LinearLayout
-    android:layout_height="60dp"
-    android:layout_width="match_parent"
-    android:background="@color/dark_grey"
-    android:paddingVertical="10dp"
-    android:paddingHorizontal="10dp"
-    android:orientation="horizontal"
-    android:gravity="center_vertical">
-    <ImageView
-        android:layout_height="30dp"
-        android:layout_width="30dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/medal"
-        android:backgroundTint="@color/orange"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="@string/leaderboards_header"
-        android:textAllCaps="true"
-        android:fontFamily="@font/source_code_bold"
-        android:textSize="24sp"
-        android:textColor="@color/white"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/leaderboardsAirport"
-        android:text="@string/leaderboards_airport"
-        android:textAllCaps="true"
-        android:fontFamily="@font/source_code_bold"
-        android:textSize="24sp"
-        android:textColor="@color/orange"/>
-</LinearLayout>
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="10dp"
-        android:background="@color/darker_grey"
-        >
+        tools:context=".ui.find.FindFragment"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="28dp"
+        android:clipToPadding="false">
 
         <LinearLayout
-            android:layout_height="30dp"
+            android:layout_height="60dp"
             android:layout_width="match_parent"
+            android:background="@color/dark_grey"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"
             android:orientation="horizontal"
-            android:paddingVertical="5dp"
-            android:paddingHorizontal="5dp"
             android:gravity="center_vertical">
+            <ImageView
+                android:layout_height="24dp"
+                android:layout_width="24dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/medal"
+                android:backgroundTint="@color/orange"/>
 
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="@string/leaderboards_rank"
+                android:text="@string/leaderboards_header"
                 android:textAllCaps="true"
-                android:fontFamily="@font/source_code"
-                android:textSize="18sp"
-                android:textColor="@color/grey"/>
+                android:fontFamily="@font/source_code_bold"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:text="@string/leaderboards_name"
+                android:layout_width="wrap_content"
+                android:id="@+id/leaderboardsAirport"
+                android:text="@string/leaderboards_airport"
                 android:textAllCaps="true"
-                android:fontFamily="@font/source_code"
-                android:textSize="18sp"
-                android:textColor="@color/grey"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:text="@string/leaderboards_score"
-                android:textAllCaps="true"
-                android:fontFamily="@font/source_code"
-                android:textSize="18sp"
-                android:textColor="@color/grey"/>
+                android:fontFamily="@font/source_code_bold"
+                android:textSize="20sp"
+                android:textColor="@color/orange"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/leaderBoardsRecyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@color/darker_grey"
+            >
+
+            <LinearLayout
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/leaderboards_rank"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/source_code"
+                    android:textSize="18sp"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:text="@string/leaderboards_name"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/source_code"
+                    android:textSize="18sp"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:text="@string/leaderboards_score"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/source_code"
+                    android:textSize="18sp"
+                    android:textColor="@color/grey"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/leaderBoardsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/leaderboardsbg"/>
+
+</RelativeLayout>

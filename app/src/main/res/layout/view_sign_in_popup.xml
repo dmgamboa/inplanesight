@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/SignInBg"
         android:layout_marginTop="25dp"
-        android:paddingHorizontal="25dp"
+        android:paddingHorizontal="15dp"
         android:orientation="vertical">
 
         <TextView
@@ -60,12 +60,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="50dp"
             android:layout_marginRight="2.5dp"
             android:backgroundTint="@android:color/transparent"
             app:rippleColor="@color/marine_blue"
             app:strokeColor="@color/white"
-            android:textSize="12sp"
             app:strokeWidth="2dp"/>
 
         <Button
@@ -75,10 +73,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="50dp"
             android:layout_marginLeft="2.5dp"
-            android:textSize="12sp"
-            android:backgroundTint="@color/aqua"/>
+            android:backgroundTint="@color/teal_200"/>
     </LinearLayout>
 
     <ImageView

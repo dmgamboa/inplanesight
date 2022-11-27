@@ -33,6 +33,11 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
         this.onClicked = onClicked;
     }
 
+    public FlightInfoRecyclerViewAdapter(Context context) {
+        this.context = context;
+        this.flights = new Flight[0];
+    }
+
     @NonNull
     @Override
     public FlightViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

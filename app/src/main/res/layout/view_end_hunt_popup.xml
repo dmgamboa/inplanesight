@@ -39,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp"
             android:paddingBottom="10dp">
             <TextView
                 android:id="@+id/endHuntTxt"
@@ -48,7 +47,7 @@
                 android:fontFamily="@font/sono"
                 android:text="@string/end_hunt_text"
                 android:textColor="@color/white"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/endHuntScore"
@@ -67,7 +66,7 @@
             android:fontFamily="@font/sono"
             android:text="@string/end_hunt_text_2"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="12sp"/>
     </LinearLayout>
 
     <LinearLayout

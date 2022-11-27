@@ -1,5 +1,6 @@
 package com.inplanesight.ui.find;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -11,10 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.inplanesight.R;
@@ -23,12 +28,14 @@ import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
+import com.inplanesight.models.Flight;
 import com.inplanesight.models.Hunt;
 
 import java.util.ArrayList;
 
 public class FindFragment extends Fragment {
     ArrayList<ViewPagerItem> viewPagerItems;
+    boolean popupOpen = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,13 +89,18 @@ public class FindFragment extends Fragment {
                     }
                 }
 
+                boolean endHunt = true;
                 ArrayList<Hunt> hunts = game.getScavengerHunt();
                 for (int i = 0; i < hunts.size(); i++) {
                     if (hunts.get(i).getTimestampFound() != null) {
                         carouselBtns[i].setBackgroundColor(getResources().getColor(R.color.marine_blue));
                     } else {
+                        endHunt = false;
                         carouselBtns[i].setBackgroundColor(getResources().getColor(com.google.android.libraries.places.R.color.quantum_grey));
                     }
+                }
+                if (endHunt && hunts.size() > 0 && !popupOpen) {
+                    onEndHunt(game.getScore());
                 }
             }
         });
@@ -122,22 +134,48 @@ public class FindFragment extends Fragment {
                 String message;
                 switch (res) {
                     case 0:
-                        message = "Wrong place :( -100pts";
+                        message = "Wrong place :( -1pts";
                         break;
                     case 1:
-                        message = "Found location +1000pts!";
+                        message = "Found location +10pts!";
                         break;
                     case 2:
                         message = "Location found!";
                         break;
                     default:
-                        message = "You scored " + res + "pts total! Check out the leaderboards to see how you placed!";
+                        message = "Hunt complete!";
                 }
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-//                if (res > 2) {
-//                    Navigation.findNavController(requireView()).navigate(R.id.action_end_hunt);
-//                }
             });
+        });
+    }
+
+    public void onEndHunt(double score) {
+        LayoutInflater inflater = (LayoutInflater) requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View popup = inflater.inflate(R.layout.view_end_hunt_popup, null);
+        popupOpen = true;
+
+        TextView scoreView = popup.findViewById(R.id.endHuntScore);
+        String scoreString = ((int) score) + " points";
+        scoreView.setText(scoreString);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        final PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
+        popupWindow.showAtLocation(getView(), Gravity.CENTER, 0, 0);
+
+        popup.setOnTouchListener((v, e) -> {
+            v.performClick();
+            popupWindow.dismiss();
+            popupOpen = false;
+            return true;
+        });
+
+        Button redirectBtn = popup.findViewById(R.id.endHuntBtn);
+        redirectBtn.setOnClickListener((e) -> {
+            popupWindow.dismiss();
+            popupOpen = false;
+            Navigation.findNavController(requireView()).navigate(R.id.action_end_hunt);
         });
     }
 }

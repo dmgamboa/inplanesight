@@ -100,12 +100,12 @@ public class GameViewModel extends ViewModel {
             if (updatedGame.getScavengerHunt().get(index).getTimestampFound() == null) {
                 foundLocation = 1;
                 updatedGame.getScavengerHunt().get(index).setTimestampFound(new Date(0));
-                updatedGame.setScore(1000);
+                updatedGame.setScore(10);
             } else {
                 foundLocation = 2;
             }
         } else {
-            updatedGame.setScore(-100);
+            updatedGame.setScore(-1);
         }
 
         game.setValue(updatedGame);
@@ -125,7 +125,7 @@ public class GameViewModel extends ViewModel {
     public int endHunt () {
         for (Hunt item: game.getValue().getScavengerHunt()) {
             if (item.getTimestampFound() != null) {
-                game.getValue().setScore(1000 - (int) (item.getTimestampFound().getTime() - game.getValue().getStartingTimestamp().getTime()));
+                game.getValue().setScore(10 - (int) (item.getTimestampFound().getTime() - game.getValue().getStartingTimestamp().getTime()));
             }
         }
         return game.getValue().getScore();

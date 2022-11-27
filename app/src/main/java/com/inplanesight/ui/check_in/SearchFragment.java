@@ -49,6 +49,10 @@ public class SearchFragment extends Fragment {
         state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
 
         RecyclerView flightList = requireActivity().findViewById(R.id.searchFlightsRecyclerView);
+        flightList.setLayoutManager(new LinearLayoutManager(getContext()));
+        FlightInfoRecyclerViewAdapter emptyAdapter = new FlightInfoRecyclerViewAdapter(getContext());
+        flightList.setAdapter(emptyAdapter);
+
 
         FlightSearchViewModel flightSearch = new ViewModelProvider(this).get(FlightSearchViewModel.class);
         flightSearch.getFlights(state.getAirport()).observe(getViewLifecycleOwner(), models -> {
@@ -56,7 +60,6 @@ public class SearchFragment extends Fragment {
                 Flight[] flights = new Flight[models.size()];
                 flights = models.toArray(flights);
                 FlightInfoRecyclerViewAdapter adapter = new FlightInfoRecyclerViewAdapter(getContext(), flights, this::onFlightClicked);
-                flightList.setLayoutManager(new LinearLayoutManager(getContext()));
                 flightList.setAdapter(adapter);
             }
         });

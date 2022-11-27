@@ -22,6 +22,11 @@ public class LeaderboardRecyclerViewAdapter extends RecyclerView.Adapter<Leaderb
         this.leaderboards = leaderboards;
     }
 
+    public LeaderboardRecyclerViewAdapter(Context context) {
+        this.context = context;
+        this.leaderboards = new Leaderboard[0];
+    }
+
     private String toOrdinal(int i) {
         int last = i % 10;
         switch (last) {

@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -50,6 +51,15 @@ public class FirebaseAPI extends Service {
         //Query firebase for airport, return empty if nothing found
         db.collection(collection)
                 .whereEqualTo("airportCode", airportCode)
+                .get()
+                .addOnCompleteListener(f);
+    }
+
+    public static void readFromFirebaseLeaderboards(String airportCode, String collection, OnCompleteListener<QuerySnapshot> f) {
+        //Query firebase for airport, return empty if nothing found
+        db.collection(collection)
+                .whereEqualTo("airportCode", airportCode)
+                .orderBy("score", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(f);
     }

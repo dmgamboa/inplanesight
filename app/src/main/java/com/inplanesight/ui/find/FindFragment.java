@@ -29,7 +29,9 @@ import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
 import com.inplanesight.models.Flight;
+import com.inplanesight.models.Game;
 import com.inplanesight.models.Hunt;
+import com.inplanesight.ui.common.FlightInfoRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -53,6 +55,8 @@ public class FindFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ViewPager2 viewPager = requireView().findViewById(R.id.findImgCarousel);
+//        FindRecyclerViewAdapter emptyAdapter = new FindRecyclerViewAdapter(getContext(), new Hunt[1]);
+//        viewPager.setAdapter(emptyAdapter);
         viewPagerItems = new ArrayList<>();
         Button[] carouselBtns = {requireActivity().findViewById(R.id.findImgBtn1),
                 requireActivity().findViewById(R.id.findImgBtn2),

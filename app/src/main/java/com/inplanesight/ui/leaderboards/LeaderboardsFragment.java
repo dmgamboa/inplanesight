@@ -17,9 +17,14 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.inplanesight.R;
+import com.inplanesight.data.FlightSearchViewModel;
+import com.inplanesight.data.LeaderboardsViewModel;
 import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
+import com.inplanesight.models.Flight;
 import com.inplanesight.models.Leaderboard;
+import com.inplanesight.ui.common.FlightInfoRecyclerViewAdapter;
+
 public class LeaderboardsFragment extends Fragment {
 
     public LeaderboardsFragment() {
@@ -43,14 +48,20 @@ public class LeaderboardsFragment extends Fragment {
         TextView airportHeader = requireActivity().findViewById(R.id.leaderboardsAirport);
         airportHeader.setText(selectedAirport.getCode());
 
-        Leaderboard[] test = {
-                new Leaderboard("Donna", 2142), new Leaderboard("Andy", 1234), new Leaderboard("Dustin", 2), new Leaderboard("Brendan", 1)
-        };
-
         RecyclerView recyclerView = requireView().findViewById(R.id.leaderBoardsRecyclerView);
-        LeaderboardRecyclerViewAdapter adapter = new LeaderboardRecyclerViewAdapter(getContext(), test);
+        LeaderboardRecyclerViewAdapter adapter = new LeaderboardRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        LeaderboardsViewModel leaderboards = new ViewModelProvider(this).get(LeaderboardsViewModel.class);
+        leaderboards.getLeaderboards(state.getAirport().getCode()).observe(getViewLifecycleOwner(), entries -> {
+            if (entries != null) {
+                Leaderboard[] leaderboard = new Leaderboard[entries.size()];
+                leaderboard = entries.toArray(leaderboard);
+                LeaderboardRecyclerViewAdapter updatedAdapter = new LeaderboardRecyclerViewAdapter(getContext(), leaderboard);
+                recyclerView.setAdapter(updatedAdapter);
+            }
+        });
     }
 
 

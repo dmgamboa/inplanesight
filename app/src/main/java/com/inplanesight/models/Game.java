@@ -52,4 +52,13 @@ public class Game implements Serializable {
     public void setUser(Users user) {
         this.user = user;
     }
+
+    public boolean hasEnded() {
+        for (Hunt hunt : scavengerHunt) {
+            if (hunt.getTimestampFound() == null) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -7,27 +7,27 @@ import java.io.Serializable;
 public class Leaderboard implements Serializable {
     String user;
     int score;
-    String code;
+    String airportCode;
 
     public Leaderboard() {}
 
     public Leaderboard(String username, int score) {
         this.user = username;
         this.score = score;
-        this.code = code;
+        this.airportCode = airportCode;
     }
 
-    public Leaderboard(String username, int score, String code) {
+    public Leaderboard(String username, int score, String airportCode) {
         this.user = username;
         this.score = score;
-        this.code = code;
+        this.airportCode = airportCode;
     }
 
     public Leaderboard(JSONObject entry) {
         try {
             this.user = entry.getString("user");
             this.score = entry.getInt("score");
-            this.code = entry.getString("airportCode");
+            this.airportCode = entry.getString("airportCode");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,11 +49,11 @@ public class Leaderboard implements Serializable {
         this.score = score;
     }
 
-    public String getCode() {
-        return code;
+    public String getAirportCode() {
+        return airportCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setAirportCode(String airportCode) {
+        this.airportCode = airportCode;
     }
 }

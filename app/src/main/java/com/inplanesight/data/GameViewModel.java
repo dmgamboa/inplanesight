@@ -6,20 +6,16 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.api.GooglePlacesAPI;
 import com.inplanesight.models.Coordinates;
-import com.inplanesight.models.Flight;
 import com.inplanesight.models.Game;
 import com.inplanesight.models.Hunt;
 import com.inplanesight.models.Leaderboard;
 import com.inplanesight.models.Users;
 
-import org.checkerframework.checker.units.qual.A;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -35,6 +31,7 @@ public class GameViewModel extends ViewModel {
     private ArrayList<Hunt> huntDataList = new ArrayList<>();
     private MutableLiveData<ArrayList<Hunt>> hunt = new MutableLiveData<>();
     private GooglePlacesAPI places = new GooglePlacesAPI(huntDataList);
+    boolean postedScore = false;
 
     public GameViewModel() {}
 
@@ -81,13 +78,8 @@ public class GameViewModel extends ViewModel {
         Coordinates placeLoc = game.getValue().getHuntAt(index).getCoordinates();
         Game updatedGame = game.getValue();
         int foundLocation = 0;
-        boolean foundAll = true;
-        for (Hunt item: updatedGame.getScavengerHunt()) {
-            if (item.getTimestampFound() == null) {
-                foundAll = false;
-            }
-        }
-        if (foundAll) {
+        if (updatedGame.hasEnded() && !postedScore) {
+            postedScore = true;
             foundLocation = endHunt();
             Users user = game.getValue().getUser();
             String username = null;

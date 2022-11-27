@@ -32,7 +32,7 @@ public class LeaderboardsViewModel extends ViewModel {
     }
 
     private void loadLeaderboards(String airportCode) {
-        FirebaseAPI.readFromFirebase(airportCode, "leaderboards", task -> {
+        FirebaseAPI.readFromFirebaseLeaderboards(airportCode, "leaderboards", task -> {
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Log.d("Success", document.getId() + " => " + document.getData());
@@ -42,8 +42,16 @@ public class LeaderboardsViewModel extends ViewModel {
                 Log.w("Failure", "Error getting documents.", task.getException());
             }
             ArrayList<Leaderboard> updatedLeaderboards = new ArrayList<>();
-            for (JSONObject leaderboard : leaderboardList) {
-                updatedLeaderboards.add(new Leaderboard(leaderboard));
+            for (JSONObject entry : leaderboardList) {
+                String username = null;
+                try {
+                    username = entry.getString("user");
+                } catch (Exception e){
+
+                }
+                if (username != null && !username.equals("null")) {
+                    updatedLeaderboards.add(new Leaderboard(entry));
+                }
             }
             leaderboards.postValue(updatedLeaderboards);
         });

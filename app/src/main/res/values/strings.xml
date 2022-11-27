@@ -30,6 +30,12 @@
     <string name="flight_info_departing_time">Departs At</string>
     <string name="flight_info_status">Status</string>
 
+    <!-- Sign In Popup -->
+    <string name="sign_in_popup_header">Hol Up</string>
+    <string name="sign_in_popup_text">It looks like you\'re not signed in. Only members who are signed in can post their scores to the leaderboards.</string>
+    <string name="sign_in_popup_sign_in_btn">Sign In</string>
+    <string name="sign_in_popup_start_hunt_btn">Start Hunt</string>
+
     <!-- Hunt -->
     <string name="start_hunt_header">You\'re all set!</string>
     <string name="start_hunt_txt">Keep an eye out for these locations while you walk around the airport.</string>
@@ -42,7 +48,7 @@
     <string name="end_hunt_text">You scored a total of </string>
     <string name="end_hunt_score">69 points</string>
     <string name="end_hunt_dot">.</string>
-    <string name="end_hunt_text_2">Check out the leaderboards to see how you scored.</string>
+    <string name="end_hunt_to_leaderboards">Check out the leaderboards to see how you scored.</string>
     <string name="end_hunt_btn">Let\'s go!</string>
 
     <!-- Flight Info -->

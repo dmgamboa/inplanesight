@@ -24,47 +24,23 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/EndHuntHeading"
+            android:id="@+id/SignInPopupHeading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sono_bold"
             android:gravity="center_horizontal"
-            android:text="@string/end_hunt_header"
+            android:text="@string/sign_in_popup_header"
             android:textAlignment="center"
             android:textColor="@color/marine_blue"
             android:textSize="24sp"
             android:paddingBottom="20dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp">
-            <TextView
-                android:id="@+id/endHuntTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sono"
-                android:text="@string/end_hunt_text"
-                android:textColor="@color/white"
-                android:textSize="14sp"/>
-
-            <TextView
-                android:id="@+id/endHuntScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sono_bold"
-                android:text="@string/end_hunt_score"
-                android:textColor="@color/marine_blue"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/endHuntAfterScore"
+            android:id="@+id/signInPopupTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sono"
-            android:text="@string/end_hunt_to_leaderboards"
+            android:text="@string/sign_in_popup_text"
             android:textColor="@color/white"
             android:textSize="14sp"/>
     </LinearLayout>
@@ -74,18 +50,35 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/SignInBg"
         android:layout_marginBottom="50dp"
+        android:paddingHorizontal="10dp"
+        android:orientation="horizontal"
         android:gravity="center">
         <Button
-            android:id="@+id/endHuntBtn"
-            android:text="@string/end_hunt_btn"
+            android:id="@+id/signInPopupBtnStartHunt"
+            android:text="@string/sign_in_popup_start_hunt_btn"
             android:fontFamily="@font/sono_bold"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:paddingHorizontal="50dp"
+            android:layout_marginRight="2.5dp"
             android:backgroundTint="@android:color/transparent"
             app:rippleColor="@color/marine_blue"
             app:strokeColor="@color/white"
+            android:textSize="12sp"
             app:strokeWidth="2dp"/>
+
+        <Button
+            android:id="@+id/signInPopupBtnSignin"
+            android:text="@string/sign_in_popup_sign_in_btn"
+            android:fontFamily="@font/sono_bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="50dp"
+            android:layout_marginLeft="2.5dp"
+            android:textSize="12sp"
+            android:backgroundTint="@color/aqua"/>
     </LinearLayout>
 
     <ImageView

@@ -78,11 +78,14 @@
         android:label="fragment_start_hunt"
         tools:layout="@layout/fragment_start_hunt" >
         <action
-            android:id="@+id/action_startHuntFragment_to_findFragment2"
+            android:id="@+id/action_startHuntFragment_to_findFragment"
             app:destination="@id/findFragment" />
         <action
             android:id="@+id/action_startHuntFragment_to_flightInfoFragment"
             app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_startHuntFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/findFragment"
@@ -90,7 +93,10 @@
         android:label="fragment_find"
         tools:layout="@layout/fragment_find" >
         <action
-            android:id="@+id/action_end_hunt"
+            android:id="@+id/action_end_hunt_leaderboard"
             app:destination="@id/leaderboardsFragment" />
+        <action
+            android:id="@+id/action_end_hunt_signin"
+            app:destination="@id/accountFragment" />
     </fragment>
 </navigation>

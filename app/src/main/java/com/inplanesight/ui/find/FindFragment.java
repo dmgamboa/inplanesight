@@ -27,11 +27,7 @@ import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.data.StateViewModel;
-import com.inplanesight.models.Airport;
-import com.inplanesight.models.Flight;
-import com.inplanesight.models.Game;
 import com.inplanesight.models.Hunt;
-import com.inplanesight.ui.common.FlightInfoRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -163,6 +159,7 @@ public class FindFragment extends Fragment {
         String scoreString = ((int) score) + " points";
         scoreView.setText(scoreString);
 
+
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         final PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
@@ -179,7 +176,7 @@ public class FindFragment extends Fragment {
         redirectBtn.setOnClickListener((e) -> {
             popupWindow.dismiss();
             popupOpen = false;
-            Navigation.findNavController(requireView()).navigate(R.id.action_end_hunt);
+            Navigation.findNavController(requireView()).navigate(R.id.action_end_hunt_leaderboard);
         });
     }
 }

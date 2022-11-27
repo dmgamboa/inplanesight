@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startHuntFragment">
+    app:startDestination="@id/checkInFragment">
     <fragment
         android:id="@+id/checkInFragment"
         android:name="com.inplanesight.ui.check_in.CheckInFragment"
@@ -33,31 +33,6 @@
         <action
             android:id="@+id/action_flightInfoFragment_to_leaderboardsFragment"
             app:destination="@id/leaderboardsFragment" />
-        <action
-            android:id="@+id/action_flightInfoFragment_to_findFragment"
-            app:destination="@id/findFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/findFragment"
-        android:name="com.inplanesight.ui.find.FindFragment02"
-        android:label="fragment_find"
-        tools:layout="@layout/fragment_find02" >
-        <action
-            android:id="@+id/action_findFragment_to_leaderboardsFragment"
-            app:destination="@id/leaderboardsFragment" />
-        <action
-            android:id="@+id/action_findFragment_to_flightInfoFragment"
-            app:destination="@id/flightInfoFragment" />
-        <action
-            android:id="@+id/action_findFragment_to_huntFragment"
-            app:destination="@id/huntFragment" >
-            <argument
-                android:name="selectedAirport"
-                app:argType="com.inplanesight.models.Airport" />
-        </action>
-        <argument
-            android:name="selectedAirport"
-            app:argType="com.inplanesight.models.Airport" />
     </fragment>
     <fragment
         android:id="@+id/leaderboardsFragment"
@@ -98,36 +73,24 @@
             app:destination="@id/accountFragment" />
     </fragment>
     <fragment
-        android:id="@+id/huntFragment"
-        android:name="com.inplanesight.ui.find.HuntFragment"
-        android:label="fragment_hunt"
-        tools:layout="@layout/fragment_hunt" >
-        <action
-            android:id="@+id/action_huntFragment_to_findFragment"
-            app:destination="@id/findFragment" />
-        <argument
-            android:name="selectedAirport"
-            app:argType="com.inplanesight.models.Airport" />
-    </fragment>
-    <fragment
         android:id="@+id/startHuntFragment"
         android:name="com.inplanesight.ui.find.StartHuntFragment"
         android:label="fragment_start_hunt"
         tools:layout="@layout/fragment_start_hunt" >
         <action
             android:id="@+id/action_startHuntFragment_to_findFragment2"
-            app:destination="@id/findFragment2" />
+            app:destination="@id/findFragment" />
         <action
             android:id="@+id/action_startHuntFragment_to_flightInfoFragment"
             app:destination="@id/flightInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/findFragment2"
+        android:id="@+id/findFragment"
         android:name="com.inplanesight.ui.find.FindFragment"
         android:label="fragment_find"
         tools:layout="@layout/fragment_find" >
         <action
-            android:id="@+id/action_findFragment2_to_flightInfoFragment"
-            app:destination="@id/flightInfoFragment" />
+            android:id="@+id/action_end_hunt"
+            app:destination="@id/leaderboardsFragment" />
     </fragment>
 </navigation>

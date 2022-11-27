@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import com.inplanesight.R;
 import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.LocationViewModel;
+import com.inplanesight.data.StateViewModel;
+import com.inplanesight.models.Airport;
 import com.inplanesight.models.Hunt;
 
 import java.util.ArrayList;
@@ -51,6 +54,12 @@ public class FindFragment extends Fragment {
 
         LocationViewModel locationService = new ViewModelProvider(requireActivity()).get(LocationViewModel.class);
         GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+
+        StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
+        if (state.getUser() != null) {
+            gameViewModel.getGame().getValue().setUser(state.getUser());
+        };
+
         gameViewModel.getGame().observe(getViewLifecycleOwner(), game -> {
             if (game != null) {
                 if (viewPagerItems.isEmpty()) {
@@ -77,12 +86,8 @@ public class FindFragment extends Fragment {
                 for (int i = 0; i < hunts.size(); i++) {
                     if (hunts.get(i).getTimestampFound() != null) {
                         carouselBtns[i].setBackgroundColor(getResources().getColor(R.color.marine_blue));
-                        foundBtn.setText(getResources().getText(R.string.hunt_btn_enabled));
-                        foundBtn.setEnabled(false);
                     } else {
                         carouselBtns[i].setBackgroundColor(getResources().getColor(com.google.android.libraries.places.R.color.quantum_grey));
-                        foundBtn.setText(getResources().getText(R.string.hunt_btn_disabled));
-                        foundBtn.setEnabled(false);
                     }
                 }
             }
@@ -102,6 +107,7 @@ public class FindFragment extends Fragment {
                             foundBtn.setEnabled(false);
                         } else {
                             foundBtn.setText(getResources().getText(R.string.hunt_btn_enabled));
+                            foundBtn.setBackgroundColor(getResources().getColor(R.color.orange));
                             foundBtn.setEnabled(true);
                         }
                     }
@@ -125,9 +131,12 @@ public class FindFragment extends Fragment {
                         message = "Location found!";
                         break;
                     default:
-                        message = "You scored " + res + "pts total!";
+                        message = "You scored " + res + "pts total! Check out the leaderboards to see how you placed!";
                 }
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//                if (res > 2) {
+//                    Navigation.findNavController(requireView()).navigate(R.id.action_end_hunt);
+//                }
             });
         });
     }

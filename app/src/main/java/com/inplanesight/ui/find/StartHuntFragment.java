@@ -54,9 +54,9 @@ public class StartHuntFragment extends Fragment {
             Airport selectedAirport = state.getAirport();
 
             try {
-                gameViewModel.startHunt("CYVR", new Coordinates(49.193901062,-123.183998108));
+//                gameViewModel.startHunt("CYVR", new Coordinates(49.193901062,-123.183998108));
 
-//                gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
+                gameViewModel.startHunt(selectedAirport.getCode(), selectedAirport.getCoordinates());
             } catch (IOException e) {
                 Log.d("In Plane Sight", e.getMessage());
             }

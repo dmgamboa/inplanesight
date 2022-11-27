@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -15,6 +16,8 @@ import com.inplanesight.models.Coordinates;
 import com.inplanesight.models.Flight;
 import com.inplanesight.models.Game;
 import com.inplanesight.models.Hunt;
+import com.inplanesight.models.Leaderboard;
+import com.inplanesight.models.Users;
 
 import org.checkerframework.checker.units.qual.A;
 import org.json.JSONObject;
@@ -31,7 +34,6 @@ public class GameViewModel extends ViewModel {
     private ArrayList<JSONObject> huntList = new ArrayList<>();
     private ArrayList<Hunt> huntDataList = new ArrayList<>();
     private MutableLiveData<ArrayList<Hunt>> hunt = new MutableLiveData<>();
-
     private GooglePlacesAPI places = new GooglePlacesAPI(huntDataList);
 
     public GameViewModel() {}
@@ -87,9 +89,14 @@ public class GameViewModel extends ViewModel {
         }
         if (foundAll) {
             foundLocation = endHunt();
-            return foundLocation;
-        }
-        if (Math.abs(Coordinates.getDistance(userLoc, placeLoc)) <= threshold) {
+            Users user = game.getValue().getUser();
+            String username = null;
+            if (user != null) {
+                username = user.getNickname();
+            }
+            Leaderboard entry = new Leaderboard(username, foundLocation, airportCode);
+            FirebaseAPI.writeToFirebase(entry, "leaderboards");
+        } else if (Math.abs(Coordinates.getDistance(userLoc, placeLoc)) <= threshold) {
             if (updatedGame.getScavengerHunt().get(index).getTimestampFound() == null) {
                 foundLocation = 1;
                 updatedGame.getScavengerHunt().get(index).setTimestampFound(new Date(0));
@@ -100,6 +107,7 @@ public class GameViewModel extends ViewModel {
         } else {
             updatedGame.setScore(-100);
         }
+
         game.setValue(updatedGame);
         return foundLocation;
     }

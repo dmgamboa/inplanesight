@@ -10,6 +10,7 @@ public class Game implements Serializable {
     ArrayList<Hunt> scavengerHunt;
     Date startingTimestamp;
     int score;
+    Users user;
 
     public Game(String airportCode) {
         this.airportCode = airportCode;
@@ -42,5 +43,13 @@ public class Game implements Serializable {
 
     public void setStartingTimestamp(Date startingTimestamp) {
         this.startingTimestamp = startingTimestamp;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

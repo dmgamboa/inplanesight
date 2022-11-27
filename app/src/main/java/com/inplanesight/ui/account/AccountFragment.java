@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -22,6 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.inplanesight.R;
 import com.inplanesight.api.FirebaseAPI;
+import com.inplanesight.data.StateViewModel;
+import com.inplanesight.models.Airport;
 import com.inplanesight.models.Users;
 
 /**
@@ -112,6 +115,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
                                 nicknameUI.setText(nickname);
                                 emailUI.setText(email);
+
+                                StateViewModel state = new ViewModelProvider(requireActivity()).get(StateViewModel.class);
+                                state.setUser(users);
 
                                 break;
                             }

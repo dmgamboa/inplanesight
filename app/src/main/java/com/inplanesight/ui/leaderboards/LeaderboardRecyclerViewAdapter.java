@@ -31,7 +31,9 @@ public class LeaderboardRecyclerViewAdapter extends RecyclerView.Adapter<Leaderb
         int last = i % 10;
         switch (last) {
             case 1:
-                return i + "st";
+                if (i != 11) {
+                    return i + "st";
+                }
             case 2:
                 return i + "nd";
             case 3:

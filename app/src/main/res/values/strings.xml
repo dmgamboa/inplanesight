@@ -37,6 +37,14 @@
     <string name="hunt_btn_enabled">Found It!</string>
     <string name="hunt_btn_disabled">Already found!</string>
 
+    <!-- End Hunt Popup -->
+    <string name="end_hunt_header">Way to go!</string>
+    <string name="end_hunt_text">You scored a total of </string>
+    <string name="end_hunt_score">69 points</string>
+    <string name="end_hunt_dot">.</string>
+    <string name="end_hunt_text_2">Check out the leaderboards to see how you scored.</string>
+    <string name="end_hunt_btn">Let\'s go!</string>
+
     <!-- Flight Info -->
     <string name="flight_info_header">Your upcoming flight</string>
 

@@ -25,7 +25,6 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
     Context context;
     Flight[] flights;
     OnFlightClicked onClicked;
-    Flight selectedFlight;
 
     public FlightInfoRecyclerViewAdapter(Context context, Flight[] flights, OnFlightClicked onClicked) {
         this.context = context;
@@ -70,8 +69,6 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
         holder.terminal.setText(flight.getTerminal());
         holder.departureTime.setText(flight.getTimeAsString());
         holder.status.setText(flight.getStatus());
-
-        this.selectedFlight = flight;
     }
 
     @Override
@@ -104,7 +101,7 @@ public class FlightInfoRecyclerViewAdapter extends RecyclerView.Adapter<FlightIn
             status = itemView.findViewById(R.id.flightInfoStatusVal);
 
             if (onClicked != null) {
-                itemView.setOnClickListener(view -> onClicked.f(selectedFlight));
+                itemView.setOnClickListener(view -> onClicked.f(flights[this.getAdapterPosition()]));
             }
         }
     }

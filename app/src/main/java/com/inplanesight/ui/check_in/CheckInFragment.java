@@ -79,17 +79,15 @@ public class CheckInFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     public void suggestAirport(View view) {
-        locationService.getCoordinates().observe(getViewLifecycleOwner(), coords -> {
-            if (coords != null) {
-                int closestAirportIndex = airportService.getClosestAirportIndex(coords);
-                Spinner airportSpinner = requireActivity().findViewById(R.id.checkInAirportInput);
-                airportSpinner.setSelection(closestAirportIndex);
-                selectedAirport = airportService.getAirport(closestAirportIndex);
+        Coordinates coords = locationService.getCoordinates();
+        if (coords != null) {
+            int closestAirportIndex = airportService.getClosestAirportIndex(coords);
+            Spinner airportSpinner = requireActivity().findViewById(R.id.checkInAirportInput);
+            airportSpinner.setSelection(closestAirportIndex);
+            selectedAirport = airportService.getAirport(closestAirportIndex);
 
-                Toast.makeText(requireActivity(), R.string.check_in_suggest_airport_toast, Toast.LENGTH_SHORT).show();
-                }
-            });
-        locationService.storeLocation();
+            Toast.makeText(requireActivity(), R.string.check_in_suggest_airport_toast, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_row="2"
         android:layout_column="0"
+        android:layout_marginBottom="10dp"
         android:paddingHorizontal="20dp"
         android:textColor="@color/black"
         android:textSize="30sp" />
@@ -64,7 +65,7 @@
         android:layout_row="4"
         android:layout_column="0"
         android:paddingHorizontal="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="175dp"
         android:textColor="@color/black"
         android:textSize="30sp"/>
 

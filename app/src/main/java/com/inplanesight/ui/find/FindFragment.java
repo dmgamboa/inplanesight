@@ -27,6 +27,7 @@ import com.inplanesight.api.FirebaseAPI;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.LocationViewModel;
 import com.inplanesight.data.StateViewModel;
+import com.inplanesight.models.Coordinates;
 import com.inplanesight.models.Hunt;
 
 import java.util.ArrayList;
@@ -129,24 +130,23 @@ public class FindFragment extends Fragment {
 
         foundBtn.setOnClickListener(v -> {
             locationService.storeLocation();
-            locationService.getCoordinates().observe(getViewLifecycleOwner(), loc -> {
-                int res = gameViewModel.foundLocation(loc, viewPager.getCurrentItem());
-                String message;
-                switch (res) {
-                    case 0:
-                        message = "Wrong place :( -1pts";
-                        break;
-                    case 1:
-                        message = "Found location +10pts!";
-                        break;
-                    case 2:
-                        message = "Location found!";
-                        break;
-                    default:
-                        message = "Hunt complete!";
-                }
-                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-            });
+            Coordinates loc = locationService.getCoordinates();
+            int res = gameViewModel.foundLocation(loc, viewPager.getCurrentItem());
+            String message;
+            switch (res) {
+                case 0:
+                    message = "Wrong place :( -1pts";
+                    break;
+                case 1:
+                    message = "Found location +10pts!";
+                    break;
+                case 2:
+                    message = "Location found!";
+                    break;
+                default:
+                    message = "Hunt complete!";
+            }
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
         });
     }
 

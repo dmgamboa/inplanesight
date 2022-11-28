@@ -44,6 +44,7 @@
                 android:id="@+id/endHuntTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
                 android:fontFamily="@font/sono"
                 android:text="@string/end_hunt_text"
                 android:textColor="@color/white"

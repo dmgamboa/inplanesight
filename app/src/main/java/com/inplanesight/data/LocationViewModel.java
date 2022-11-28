@@ -7,11 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -36,24 +38,23 @@ public class LocationViewModel extends ViewModel {
         this.context = context;
         locationProvider = LocationServices.getFusedLocationProviderClient(context);
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        storeLocation();
     }
 
     @SuppressLint("MissingPermission")
     public void storeLocation() {
         if (hasLocationPermission() && isLocationEnabled()) {
-            locationProvider.getLastLocation().addOnCompleteListener(task -> {
-                try{
-                    Location res = task.getResult();
-                    location.postValue(new Coordinates(res.getLatitude(), res.getLongitude()));
-                } catch (Exception e) {
-                    Log.d("storeLocation", e.getMessage());
+            locationManager.requestLocationUpdates("gps", 5000, 0, new LocationListener() {
+                @Override
+                public void onLocationChanged(@NonNull Location loc) {
+                    location.postValue(new Coordinates(loc.getLatitude(), loc.getLongitude()));
                 }
             });
         }
     }
 
-    public MutableLiveData<Coordinates> getCoordinates() {
-        return location;
+    public Coordinates getCoordinates() {
+        return location.getValue();
     }
 
     public boolean isLocationEnabled() {

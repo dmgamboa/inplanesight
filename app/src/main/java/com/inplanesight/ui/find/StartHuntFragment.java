@@ -19,7 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.inplanesight.BuildConfig;
 import com.inplanesight.R;
+import com.inplanesight.api.GooglePlacesAPI;
 import com.inplanesight.data.GameViewModel;
 import com.inplanesight.data.StateViewModel;
 import com.inplanesight.models.Airport;
@@ -39,6 +41,8 @@ public class StartHuntFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        GooglePlacesAPI googlePlacesAPI = new GooglePlacesAPI();
+        googlePlacesAPI.initialize(this.getContext(), BuildConfig.MAPS_API_KEY);
 
         GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         gameViewModel.getGame().observe(getViewLifecycleOwner(), game -> {

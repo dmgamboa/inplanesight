@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/findImgFrame"
+        android:layout_alignBottom="@id/findImgFrame"
+        android:layout_alignLeft="@id/findImgFrame"
+        android:layout_alignRight="@id/findImgFrame"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/findImg"
+            android:layout_width="255dp"
+            android:layout_height="360dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/test_hunt_image"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/findImgFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/plane_window"/>
+</RelativeLayout>

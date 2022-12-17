@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flightInfo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2.5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/flightInfoBgTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/flight_info_top" />
+
+        <TextView
+            android:id="@+id/flightInfoAirline"
+            android:layout_alignTop="@id/flightInfoBgTop"
+            android:layout_alignLeft="@id/flightInfoBgTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:fontFamily="@font/source_code"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:paddingTop="2.5dp"
+            android:layout_marginLeft="50dp"
+            />
+
+        <ImageView
+            android:id="@+id/flightInfoBgBtm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/flightInfoBgTop"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/flight_info_btm" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignTop="@id/flightInfoBgBtm"
+            android:layout_alignBottom="@id/flightInfoBgBtm"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2.5dp">
+                <LinearLayout
+                    android:id="@+id/flightInfoFlightNum"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code"
+                        android:text="@string/flight_info_flight_number"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/flightInfoFlightNumVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code_bold"
+                        android:text="@string/placeholder"
+                        android:textAllCaps="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/flightInfoTerminal"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toEndOf="@id/flightInfoFlightNum">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code"
+                        android:text="@string/flight_info_terminal"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/flightInfoTerminalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code_bold"
+                        android:text="@string/placeholder"
+                        android:textAllCaps="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/flightInfoGate"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toEndOf="@id/flightInfoTerminal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code"
+                        android:text="@string/flight_info_gate"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/flightInfoGateVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/source_code_bold"
+                        android:text="@string/placeholder"
+                        android:textAllCaps="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp">
+                <TextView
+                    android:id="@+id/flightInfoDestinationHeader"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/source_code"
+                    android:text="@string/flight_info_destination"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/flightInfoDestinationVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@id/flightInfoDestinationHeader"
+                    android:fontFamily="@font/source_code_bold"
+                    android:text="@string/placeholder"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp">
+                <TextView
+                    android:id="@+id/flightInfoDepartingTimeHeader"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/source_code"
+                    android:text="@string/flight_info_departing_time"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/flightInfoDepartureTimeVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@id/flightInfoDepartingTimeHeader"
+                    android:fontFamily="@font/source_code_bold"
+                    android:text="@string/placeholder"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp">
+                <TextView
+                    android:id="@+id/flightInfoStatusHeader"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/source_code"
+                    android:text="@string/flight_info_status"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/flightInfoStatusVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@id/flightInfoStatusHeader"
+                    android:fontFamily="@font/source_code_bold"
+                    android:text="@string/placeholder"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navMenuBtm">
+    <item
+        android:id="@+id/startHuntFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/nav_menu_find" />
+    <item
+        android:id="@+id/leaderboardsFragment"
+        android:icon="@drawable/ic_leaderboards"
+        android:title="@string/nav_menu_leaderboards" />
+    <item
+        android:id="@+id/flightInfoFragment"
+        android:icon="@drawable/ic_flight"
+        android:title="@string/nav_menu_flight_info" />
+
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_account"
+        android:title="@string/nav_menu_account" />
+</menu>

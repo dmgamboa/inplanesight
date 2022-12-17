@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/checkInFragment">
+    <fragment
+        android:id="@+id/checkInFragment"
+        android:name="com.inplanesight.ui.check_in.CheckInFragment"
+        android:label="fragment_check_in"
+        tools:layout="@layout/fragment_check_in" >
+        <action
+            android:id="@+id/action_checkInFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.inplanesight.ui.check_in.SearchFragment"
+        android:label="SearchFragment" >
+        <argument
+            android:name="selectedAirport"
+            app:argType="com.inplanesight.models.Airport" />
+        <action
+            android:id="@+id/action_searchFragment_to_startHuntFragment"
+            app:destination="@id/startHuntFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightInfoFragment"
+        android:name="com.inplanesight.ui.flight_info.FlightInfoFragment"
+        android:label="fragment_flight_info"
+        tools:layout="@layout/fragment_flight_info" >
+        <action
+            android:id="@+id/action_flightInfoFragment_to_leaderboardsFragment"
+            app:destination="@id/leaderboardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardsFragment"
+        android:name="com.inplanesight.ui.leaderboards.LeaderboardsFragment"
+        android:label="fragment_leaderboards"
+        tools:layout="@layout/fragment_leaderboards" >
+        <action
+            android:id="@+id/action_leaderboardsFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_leaderboardsFragment_to_findFragment"
+            app:destination="@id/findFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.inplanesight.ui.overview.OverviewFragment"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_overview" >
+        <action
+            android:id="@+id/action_overviewFragment_to_checkInFragment"
+            app:destination="@id/checkInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.inplanesight.ui.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.inplanesight.ui.account.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startHuntFragment"
+        android:name="com.inplanesight.ui.find.StartHuntFragment"
+        android:label="fragment_start_hunt"
+        tools:layout="@layout/fragment_start_hunt" >
+        <action
+            android:id="@+id/action_startHuntFragment_to_findFragment"
+            app:destination="@id/findFragment" />
+        <action
+            android:id="@+id/action_startHuntFragment_to_flightInfoFragment"
+            app:destination="@id/flightInfoFragment" />
+        <action
+            android:id="@+id/action_startHuntFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.inplanesight.ui.find.FindFragment"
+        android:label="fragment_find"
+        tools:layout="@layout/fragment_find" >
+        <action
+            android:id="@+id/action_end_hunt_leaderboard"
+            app:destination="@id/leaderboardsFragment" />
+        <action
+            android:id="@+id/action_end_hunt_signin"
+            app:destination="@id/accountFragment" />
+    </fragment>
+</navigation>

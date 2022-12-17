@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/dusti/Desktop/Winter 2022/3717/InPlaneSite/inplanesight/app/src/main/res/drawable/leaderboard_border.xml" value="0.1365" />
+        <entry key="..\:/Users/dusti/Desktop/Winter 2022/3717/InPlaneSite/inplanesight/app/src/main/res/layout/fragment_find.xml" value="0.1" />
+        <entry key="..\:/Users/dusti/Desktop/Winter 2022/3717/InPlaneSite/inplanesight/app/src/main/res/layout/fragment_leaderboards.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_find.xml" value="0.13134057971014493" />
+        <entry key="app/src/main/res/layout/fragment_flight_info.xml" value="0.13134057971014493" />
+        <entry key="app/src/main/res/layout/fragment_leaderboards.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.13134057971014493" />
+        <entry key="app/src/main/res/layout/nav_menu.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/layout/view_bottom_nav.xml" value="0.13134057971014493" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.21302083333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

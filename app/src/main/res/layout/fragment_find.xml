@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.find.FindFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/findImgCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/findImgFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/plane_window_with_bg"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/plane_chair"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="100dp"
+            android:gravity="center_horizontal"
+            android:layout_above="@id/foundHuntBtn">
+
+            <Button
+                android:id="@+id/findImgBtn1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/findImgBtn2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/findImgBtn3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:backgroundTint="@color/quantum_grey"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/foundHuntBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hunt_btn_enabled"
+            android:backgroundTint="@color/orange"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/sono_bold"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </RelativeLayout>
+</RelativeLayout>

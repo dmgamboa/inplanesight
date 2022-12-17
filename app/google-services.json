@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184818605849",
+    "project_id": "in-plane-sight-adbd4",
+    "storage_bucket": "in-plane-sight-adbd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184818605849:android:e799ba4bf1d7db052fef88",
+        "android_client_info": {
+          "package_name": "com.inplanesight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184818605849-g2o8ou414i4jpj7r0ahslj0pv3o6igsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_h57JZ5ttRWv9tg4LuoY087X6mawKVXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184818605849-g2o8ou414i4jpj7r0ahslj0pv3o6igsv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

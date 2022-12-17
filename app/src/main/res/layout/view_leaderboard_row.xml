@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="45dp"
+    android:layout_width="match_parent"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="5dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/leaderboardsRank"
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:paddingVertical="2.5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="@string/leaderboards_rank"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/leaderboardsName"
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:paddingVertical="2.5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:text="@string/leaderboards_name"
+        android:fontFamily="@font/source_code"
+        android:textSize="18sp"
+        android:textColor="@color/orange"/>
+
+    <TextView
+        android:id="@+id/leaderboardsScore"
+        android:paddingLeft="5dp"
+        android:background="@color/dark_grey"
+        android:layout_marginRight="5dp"
+        android:paddingVertical="2.5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="@string/leaderboards_score"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+</LinearLayout>
